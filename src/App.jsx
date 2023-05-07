@@ -19,91 +19,10 @@ function App() {
         </a>*/}
       </div>
       <h1>Registro de llamados</h1>
-      <PruebaComponente />
-      <div className="aside">
-        <table className='table table'>
-          <tr>
-            <th> Hora</th>
-            <th> Cuarto</th>
-            <th> Código</th>
-            <th> Responsable</th>
-            <th> Desactivó</th>
-            <th> Tiempo</th>
-          </tr>
-          <tbody>
-            <tr>
-              <td> 10:30 </td>
-              <td> 301 </td>
-              <td> azul </td>
-              <td> María </td>
-              <td> Dr Andrés</td>
-              <td> 18</td>
-            </tr>
-            <tr>
-              <td> 10:30 </td>
-              <td> 301 </td>
-              <td> azul </td>
-              <td> María </td>
-              <td> Dr Andrés</td>
-              <td> 18</td>
-            </tr>
-            <tr>
-              <td> 10:30 </td>
-              <td> 301 </td>
-              <td> azul </td>
-              <td> María </td>
-              <td> Dr Andrés</td>
-              <td> 18</td>
-            </tr>
-            <tr>
-              <td> 10:30 </td>
-              <td> 301 </td>
-              <td> azul </td>
-              <td> María </td>
-              <td> Dr Andrés</td>
-              <td> 18</td>
-            </tr>
-            <tr>
-              <td> 10:30 </td>
-              <td> 301 </td>
-              <td> azul </td>
-              <td> María </td>
-              <td> Dr Andrés</td>
-              <td> 18</td>
-            </tr>
-            <tr>
-              <td> 10:30 </td>
-              <td> 301 </td>
-              <td> azul </td>
-              <td> María </td>
-              <td> Dr Andrés</td>
-              <td> 18</td>
-            </tr>
-            <tr>
-              <td> 10:30 </td>
-              <td> 301 </td>
-              <td> azul </td>
-              <td> María </td>
-              <td> Dr Andrés</td>
-              <td> 18</td>
-            </tr>
-            <tr>
-              <td> 10:30 </td>
-              <td> 301 </td>
-              <td> azul </td>
-              <td> María </td>
-              <td> Dr Andrés</td>
-              <td> 18</td>
-            </tr>
-            
-
-          </tbody>
-        </table>
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-
-      </div>
+      <PruebaComponente /> <br />
+      <button onClick={() => setCount((count) => count + 1)}>
+        count is {count}
+      </button>
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
