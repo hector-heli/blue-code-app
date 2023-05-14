@@ -8,7 +8,7 @@ const callRouter = express.Router();
 callRouter.get('/', async (req, res) => {
   try {
     const calls = await Call.find();
-    console.log(calls);
+    res.json(calls);
   } catch (err) {
     console.error('err.message');
   }

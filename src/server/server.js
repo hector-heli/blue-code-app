@@ -23,7 +23,7 @@ server.use(cors());
 
 // Configurar cabeceras y cors
 server.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "http://localhost:3000"); // Reemplazar con el dominio desde donde proviene la solicitud
+  res.header("Access-Control-Allow-Origin", "http://localhost:5173"); // Reemplazar con el dominio desde donde proviene la solicitud
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });

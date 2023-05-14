@@ -2,23 +2,28 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import { get } from 'mongoose'
 
 const PruebaComponente = () => {
   const [ calls, setCalls ] = useState([])
 
   // Función para obtener todos los usuarios
-  useEffect((calls) => {
-    const getAllUsers = async () => {
-      try {
-        const response = await axios.get('http://localhost:3000/calls');
-        setCalls(response.data);
-        console.log(calls);
-      } catch (error) {
-        console.error(error);
-      }
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await getAllCalls();
+      setCalls(data);
+    };
+    fetchData();
+  }, []);
+
+  const getAllCalls = async () => {
+    try {
+      const response = await axios.get('http://localhost:3000/calls');
+      return response.data;
+    } catch (error) {
+      console.error(error);
     }
-    // getAllUsers()
-   }, [])
+  }
 
 
   // Función para crear un nuevo usuario
@@ -52,7 +57,16 @@ const PruebaComponente = () => {
   }
 
   return (
-    <div className='card'>
+    <div className='row'>
+      { calls.map( call => (
+            <div className='card' key={call._id}>
+              <p> {call.data.epochTime} </p>
+              <p> {call.data.CallType} </p>
+              <p> {call.data.ElapsedTime} </p>
+              <p> {call.data.DesactivedBy} </p>
+              <p> {call.data.Responsable} </p>
+            </div>
+          )) }
       <table className='table'>
         <thead>
           <tr>
@@ -64,15 +78,7 @@ const PruebaComponente = () => {
           </tr>
         </thead>
         <tbody>
-          { calls.map( call => (
-            <tr key={call._id}>
-              <td> {call.data.epochTime} </td>
-              <td> {call.data.Calltype} </td>
-              <td> {call.data.ElapsedTime} </td>
-              <td> {call.data.DesactivedBy} </td>
-              <td> {call.data.Responsable} </td>
-            </tr>
-          )) }
+          
         </tbody>
       </table>
     </div> 
