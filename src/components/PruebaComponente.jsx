@@ -17,7 +17,7 @@ const PruebaComponente = () => {
         console.error(error);
       }
     }
-    getAllUsers()
+    // getAllUsers()
    }, [])
 
 
@@ -56,22 +56,26 @@ const PruebaComponente = () => {
       <table className='table'>
         <thead>
           <tr>
-            <th> id </th>
-            <th> nombre </th>
-            <th> e-mail </th>
+            <th> timeStamp </th>
+            <th> Tipo </th>
+            <th> Respuesta </th>
+            <th> Atendió </th>
+            <th> Responsable </th>
           </tr>
         </thead>
         <tbody>
           { calls.map( call => (
-            <tr key={call.id}>
-              <td> {call.id} </td>
-              <td> {call.name} </td>
-              <td> {call.email} </td>
+            <tr key={call._id}>
+              <td> {call.data.epochTime} </td>
+              <td> {call.data.Calltype} </td>
+              <td> {call.data.ElapsedTime} </td>
+              <td> {call.data.DesactivedBy} </td>
+              <td> {call.data.Responsable} </td>
             </tr>
           )) }
         </tbody>
       </table>
-    </div>
+    </div> 
   )
 }
 

@@ -1,14 +1,17 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-console */
-const mongoose = require('mongoose')
+import mongoose from 'mongoose';
 
 const URI = "mongodb+srv://hectorheli:student@cluster0.ge8haal.mongodb.net/emergency-calls-db?retryWrites=true&w=majority";
 
-module.exports = mongoose.connect(URI)
-  .then((res, db) => {
-    console.log(`db ${db} is connected`)
+mongoose.connect(URI)
+  .then(() => {
+    console.log(`db ${mongoose.connection.name} is connected`)
   })
   .catch((err) => {
-    console.warn("Cannot connect to Mongo")
+    console.warn("Cannot connect to MongoDB")
     console.error(err)
   })
+
+  export default mongoose
+  
