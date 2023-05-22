@@ -44,7 +44,7 @@
 
 .blue {
   padding: 0.5rem;
-  background-color:rgb(67, 122, 184);
+  background-color:RoyalBlue;
 }
 
 .green{
@@ -54,7 +54,7 @@
 
 .bath{
   padding: 0.5rem;
-  background-color: red;
+  background-color: LightPink;
 }
 
 .cancel{

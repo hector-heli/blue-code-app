@@ -26,7 +26,7 @@ const Room = ( {call} ) => {
         setBgColor('aquamarine')
         break;
       case 'bath':
-        setBgColor('red')
+        setBgColor('LightPink')
         break;  
       case 'cancel':
         setBgColor('transparent')
