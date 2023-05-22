@@ -15,7 +15,7 @@ const Room = ( {call} ) => {
       changeBgColor(backgroundColor);
     }, 1000);
     return () => clearInterval(interval);
-  }, [bgColor]);
+  }, [bgColor, backgroundColor]);
 
   const changeBgColor = (backgroundColor) => {
     switch (call.codeAlarm) {

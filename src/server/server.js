@@ -7,7 +7,7 @@ import cors from 'cors';
 // eslint-disable-next-line no-unused-vars
 import mongoose from './database.js';
 import callRouter from './routes/callsRouter.js';
-import pkg from '../../package.json';
+// import pkg from '../../package.json';
 
 // eslint-disable-next-line no-unused-vars
 const server = express();
@@ -15,7 +15,7 @@ const server = express();
 // Settings
 // eslint-disable-next-line no-undef
 server.set('port', process.env.PORT || 3000);
-server.set('pkg', pkg)
+// server.set('pkg', pkg)
 
 // Middlewares
 server.use(bodyParser.urlencoded({ extended: true }));
