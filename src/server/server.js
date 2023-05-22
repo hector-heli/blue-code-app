@@ -7,6 +7,7 @@ import cors from 'cors';
 // eslint-disable-next-line no-unused-vars
 import mongoose from './database.js';
 import callRouter from './routes/calls-router.js';
+import pkg from '../../package.json';
 
 // eslint-disable-next-line no-unused-vars
 const server = express();
@@ -14,6 +15,7 @@ const server = express();
 // Settings
 // eslint-disable-next-line no-undef
 server.set('port', process.env.PORT || 3000);
+server.set('pkg', pkg)
 
 // Middlewares
 server.use(bodyParser.urlencoded({ extended: true }));
@@ -23,6 +25,7 @@ server.use(cors());
 
 // Configurar cabeceras y cors
 server.use(function(req, res, next) {
+  //Evitar buscar por url https://127.0.0.1:5173
   res.header("Access-Control-Allow-Origin", "http://localhost:5173"); // Reemplazar con el dominio desde donde proviene la solicitud
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();

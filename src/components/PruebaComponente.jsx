@@ -4,8 +4,11 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { get } from 'mongoose'
 
+import { epochTimeToDate } from '../epochTimeToDate'
+
 const PruebaComponente = () => {
   const [ calls, setCalls ] = useState([])
+  const [ date, setDate ] = useState('')
 
   // Función para obtener todos los usuarios
   useEffect(() => {
@@ -14,7 +17,7 @@ const PruebaComponente = () => {
       setCalls(data);
     };
     fetchData();
-  }, []);
+  }, [date]);
 
   const getAllCalls = async () => {
     try {
@@ -24,7 +27,6 @@ const PruebaComponente = () => {
       console.error(error);
     }
   }
-
 
   // Función para crear un nuevo usuario
   const createUser = async (user) => {
@@ -57,30 +59,17 @@ const PruebaComponente = () => {
   }
 
   return (
+    
     <div className='row'>
       { calls.map( call => (
-            <div className='card' key={call._id}>
-              <p> {call.data.epochTime} </p>
-              <p> {call.data.CallType} </p>
-              <p> {call.data.ElapsedTime} </p>
-              <p> {call.data.DesactivedBy} </p>
-              <p> {call.data.Responsable} </p>
-            </div>
-          )) }
-      <table className='table'>
-        <thead>
-          <tr>
-            <th> timeStamp </th>
-            <th> Tipo </th>
-            <th> Respuesta </th>
-            <th> Atendió </th>
-            <th> Responsable </th>
-          </tr>
-        </thead>
-        <tbody>
-          
-        </tbody>
-      </table>
+        <div className={call.data.CallType === 'blue'? 'card blue' : 'card' } key={call._id}>
+          <p> {call.data.Room} </p>
+          <p> {epochTimeToDate(call.data.epochTime)} </p>
+          <p> {call.data.codeAlarm} </p>
+          <p> {epochTimeToDate(call.data.activateTime)} </p>
+          <p> {call.data.Responsable} </p>
+        </div>
+      ))};
     </div> 
   )
 }

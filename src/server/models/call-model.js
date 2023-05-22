@@ -7,22 +7,15 @@ const callSchema = new Schema({
     type: String,
     required: true
   },
+  Room: {
+    type: String,
+    required: true
+  },
   CallType:{
     type: String,
     required: true
   }, 
-  ElapsedTime: {
-    type: String,
-    required: true
-  },
-  DesactivedBy: {
-    type: String,
-    required: true
-  }, 
-  Responsable: {
-    type: String,
-    required: true
-  }, 
+  CancelTime: {type: String,}
 });
 
 export default mongoose.model('Call', callSchema);

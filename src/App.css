@@ -34,13 +34,30 @@
 }
 
 .card {
-  padding: 2em;
-  margin-top: 2rem;
-  margin-left: 2rem;
+  padding: 0.5rem;
+  margin-top: 1rem;
+  margin-left: 1rem;
   flex:auto;
-  width: min-content;
+  width: max-content;
+  background-color: bisque;
 }
 
-.read-the-docs {
-  color: #888;
+.blue {
+  padding: 0.5rem;
+  background-color:rgb(67, 122, 184);
+}
+
+.green{
+  padding: 0.5rem;
+  background-color: aquamarine;
+}
+
+.bath{
+  padding: 0.5rem;
+  background-color: red;
+}
+
+.cancel{
+  padding: 0.5rem;
+  /*background-color: azure;*/
 }
