@@ -6,7 +6,7 @@ import cors from 'cors';
 
 // eslint-disable-next-line no-unused-vars
 import mongoose from './database.js';
-import callRouter from './routes/calls-router.js';
+import callRouter from './routes/callsRouter.js';
 import pkg from '../../package.json';
 
 // eslint-disable-next-line no-unused-vars
