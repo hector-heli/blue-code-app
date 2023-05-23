@@ -3,7 +3,7 @@ import React from 'react'
 
 const Header = () => {
   return (
-    <div>COSERTEC Header</div>
+    <nav className='header'>COSERTEC Header</nav>
   )
 }
 

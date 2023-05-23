@@ -1,6 +1,4 @@
-import mongoose from "mongoose";
-
-const { Schema } = mongoose;
+import { Schema, model } from "mongoose";
 
 const callSchema = new Schema({
   epochTime: {
@@ -18,4 +16,4 @@ const callSchema = new Schema({
   CancelTime: {type: String,}
 });
 
-export default mongoose.model('Call', callSchema);
+export default model('Call', callSchema);

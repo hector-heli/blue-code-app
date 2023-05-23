@@ -9,7 +9,7 @@ const Rooms = () => {
   const [ rooms, setRooms ] = useState([]);
   const [ calls, setCalls ] = useState([]);
 
-  const roomsNumber = 12;
+  const roomsNumber = 15;
 
   // Función para obtener todos los llamados
   
@@ -66,7 +66,7 @@ const Rooms = () => {
   }
 
   return (
-    <div className='row'>
+    <div className='row page'>
       {rooms.map((room) => (
         <div className="card " key={room}>
         

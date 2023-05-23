@@ -1,9 +1,18 @@
 #root {
-  max-width: 1280px;
+  max-width: 90%;
   margin: 0 auto;
   padding: 2rem;
-  text-align: center;
+  text-align: left;
 }
+
+h1 {
+  text-align: center;
+  position: -webkit-sticky;
+  top: 0;
+  margin-top:60px;
+  margin-bottom: 30px;
+}
+
 
 .logo {
   height: 6em;
@@ -18,25 +27,10 @@
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
 .card {
   padding: 0.5rem;
-  margin-top: 1rem;
-  margin-left: 1rem;
+  margin-block: 1rem;
+  margin-inline: 1rem;
   flex:auto;
   width: max-content;
   background-color: bisque;
@@ -60,4 +54,35 @@
 .cancel{
   padding: 0.5rem;
   /*background-color: azure;*/
+}
+
+.footer{
+  width: 100%;
+  position:fixed;
+  bottom: 0px;
+  right: 0px;
+  z-index: 10000;
+  background-color: black;
+  color: azure;
+  text-align: end;
+  
+}
+
+.header{
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  width: 100%;
+  position:fixed;
+  top: 0px;
+  right: 0px;
+  z-index: 10000;
+  background-color: black;
+  color: azure;
+  font-size: 30px; 
+  text-align: center;
+}
+
+.page {
+  padding: 5px;
+  background-color: #cae8ca;
 }

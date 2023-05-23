@@ -6,7 +6,9 @@ import cors from 'cors';
 
 // eslint-disable-next-line no-unused-vars
 import mongoose from './database.js';
-import callRouter from './routes/callsRouter.js';
+import callRouter from './routes/callsRoutes.js';
+import reportRoutes from './routes/reportRoutes.js'
+
 // import pkg from '../../package.json';
 
 // eslint-disable-next-line no-unused-vars
@@ -33,6 +35,7 @@ server.use(function(req, res, next) {
 
 // Add the /calls/ route to the app using callRouter
 server.use('/calls', callRouter);
+server.use('/reports', reportRoutes);
 
 
 server.listen (server.get('port'), ()=> {
