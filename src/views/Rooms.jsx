@@ -67,12 +67,12 @@ const Rooms = () => {
 
   return (
     <div className='row page'>
+      <h1> Estado de las habitaciones </h1>
       {rooms.map((room) => (
         <div className="card " key={room}>
         
           <Room
             call={findCall(room)}
-            room={room}
           />
 
         </div> 

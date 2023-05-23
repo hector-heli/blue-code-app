@@ -4,7 +4,7 @@ import React from 'react'
 const Footer = () => {
   return (
     <div className='footer'>
-        © COSERTEC Todos los derechos reservados
+        CopyRight © 2023 COSERTEC SAS
     </div>
   )
 }
