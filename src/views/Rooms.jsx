@@ -1,13 +1,11 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 // eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-
 import Room from '../components/Room'
 
-const Rooms = () => {
+const Rooms = ({ calls }) => {
   const [ rooms, setRooms ] = useState([]);
-  const [ calls, setCalls ] = useState([]);
 
   const roomsNumber = 15;
 
@@ -15,29 +13,6 @@ const Rooms = () => {
   
   useEffect(() => {
     addRooms();
-
-    const fetchData = async () => {
-      const data = await getAllCalls();
-      setCalls(data);
-    };
-    fetchData();
-  }, []);
-
-  
-   useEffect(() => {
-    const intervalId = setInterval(() => {
-      const fetchData = async () => {
-        const data = await getAllCalls();
-        setCalls(data);
-
-      };
-      fetchData();
-    }, 4000);
-
-    return () => {
-      clearInterval(intervalId);
-    };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const addRooms = () => {
@@ -47,15 +22,6 @@ const Rooms = () => {
     }
     setRooms(newRooms);
   };
-
-  const getAllCalls = async () => {
-    try {
-      const response = await axios.get('http://localhost:3000/calls');
-      return response.data;
-    } catch (error) {
-      console.error(error);
-    }
-  }
 
   const findCall = (room) => {
     let result = calls.findLast(({data})=> data.Room === room )

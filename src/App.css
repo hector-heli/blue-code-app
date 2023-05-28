@@ -1,9 +1,11 @@
+@import "@blueprintjs/table/lib/css/table.css";
+
 #root {
-  content: normal ;
-  max-width: 90%;
+  max-width: 95%;
   margin: 0 auto;
   padding: 2rem;
   text-align: left;
+  background-color: slategrey;
 }
 
 h1 {
@@ -17,7 +19,6 @@ h1 {
 table, th, td {
   width: 100%;
   border: 1px solid;
-
 }
 
 th {
@@ -26,21 +27,6 @@ th {
 }
 
 tr:hover {background-color: rgb(189, 180, 176);}
-
-
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
 
 .card {
   padding: 0.5rem;
@@ -87,3 +73,4 @@ tr:hover {background-color: rgb(189, 180, 176);}
   padding: 5px;
   background-color: #cae8ca;
 }
+

@@ -14,6 +14,8 @@
   },
   "dependencies": {
     "@babel/register": "^7.21.0",
+    "@blueprintjs/core": "^4.19.5",
+    "@blueprintjs/table": "^4.10.7",
     "axios": "^1.4.0",
     "bootstrap": "^5.2.3",
     "cors": "^2.8.5",

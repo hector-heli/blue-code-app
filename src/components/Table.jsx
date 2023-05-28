@@ -1,10 +1,25 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-// eslint-disable-next-line no-unused-vars
-import React from 'react';
 
-function Table( {calls} ) {
+/*Diseño basado en:  https://blueprintjs.com/docs/#table */
+
+import React from 'react';
+import { Cell, Column, Table } from "@blueprintjs/table";
+
+const Tables = ( {calls} ) => {
+  (() => console.log(calls))();
+
   return (
-    <Table striped bordered hover variant="dark" className='table'>
+    <div>
+      <Table numRows= {1}>
+        <Column name="Habitación" />
+        <Column name="Código Alarma"/>
+        <Column name="Hora Activación"/>
+        <Column name="Hora Cancelación"/>
+        <Column name="Tiempo de respuesta"/>
+
+      </Table>
+      {/* <Table striped bordered hover variant="dark" className='table'>
       <thead>
         <tr>
           <th>#</th>
@@ -30,8 +45,10 @@ function Table( {calls} ) {
           </tr>
         ))}
       </tbody>
-    </Table>
+    </Table> */}
+    </div>
+    
   );
 }
 
-export default Table;
+export default Tables;
