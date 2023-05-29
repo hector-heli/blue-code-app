@@ -4,21 +4,25 @@
 /*Diseño basado en:  https://blueprintjs.com/docs/#table */
 
 import React from 'react';
-import { Cell, Column, Table } from "@blueprintjs/table";
+import { HotkeysProvider } from "@blueprintjs/core";
+import { Column, Table2 } from "@blueprintjs/table";
 
 const Tables = ( {calls} ) => {
-  (() => console.log(calls))();
+  (() => console.log(Object.keys(calls).length))();
 
   return (
     <div>
-      <Table numRows= {1}>
+      <HotkeysProvider>
+        <Table2 numRows= {5}>
         <Column name="Habitación" />
         <Column name="Código Alarma"/>
         <Column name="Hora Activación"/>
         <Column name="Hora Cancelación"/>
         <Column name="Tiempo de respuesta"/>
 
-      </Table>
+      </Table2>
+      </HotkeysProvider>
+      
       {/* <Table striped bordered hover variant="dark" className='table'>
       <thead>
         <tr>
