@@ -3,11 +3,15 @@ import React, {useEffect, useState} from 'react'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import axios from 'axios';
 
-import NavBar from './components/NavBar'
-import './App.css'
-import Rooms from './views/Rooms'
+import './App.css';
+
+import Rooms from './views/Rooms';
 import Report from "./views/Report";
+import Login from './views/Login';
+
+import NavBar from './components/NavBar';
 import Footer from './components/Footer'
+
 
 //import PruebaComponente from './components/PruebaComponente'
 
@@ -35,7 +39,7 @@ const App = () => {
 
   const getAllCalls = async () => {
     try {
-      const response = await axios.get('http://localhost:3000/calls');
+      const response = await axios.get('http://localhost:3000/api/calls');
       if (response.data !== []) return response.data;
     } catch (error) {
       console.error(error);
@@ -49,6 +53,8 @@ const App = () => {
         <Routes>
           <Route path='/' element = {<Rooms calls={calls} />} />
           <Route path='/reports' element = {<Report calls={calls} /> } />
+          <Route path='/login' element = {<Login /> } />
+
         </Routes>
         <Footer />
       </Router>

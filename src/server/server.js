@@ -3,16 +3,20 @@ import bodyParser from 'body-parser';
 import morgan from 'morgan';
 import cors from 'cors';
 
-
 // eslint-disable-next-line no-unused-vars
 import mongoose from './database.js';
 import callRouter from './routes/callsRoutes.js';
-import reportRoutes from './routes/reportRoutes.js'
+import reportRoutes from './routes/reportRoutes.js' ;
+import authRoutes  from './routes/authRoutes.js';
+import usersRoutes from './routes/usersRoutes.js';
+
+import { createRoles } from './libs/initialState.js'
 
 // import pkg from '../../package.json';
 
 // eslint-disable-next-line no-unused-vars
 const server = express();
+createRoles();
 
 // Settings
 // eslint-disable-next-line no-undef
@@ -34,10 +38,13 @@ server.use(function(req, res, next) {
 });
 
 // Add the /calls/ route to the app using callRouter
-server.use('/calls', callRouter);
-server.use('/reports', reportRoutes);
-
+server.use('/api/calls', callRouter);
+server.use('/api/reports', reportRoutes);
+server.use('/api/auth', authRoutes);
+server.use('/api/users', usersRoutes);
 
 server.listen (server.get('port'), ()=> {
   console.log(`Server listening on port ${server.get('port')}`);
 })
+
+export default server;

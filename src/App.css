@@ -1,12 +1,17 @@
 @import "@blueprintjs/popover2/lib/css/blueprint-popover2.css";
 
 #root {
-  max-width: 95%;
+  max-width: 100%;
   margin: 0 auto;
   padding: 2rem;
   text-align: left;
-  background-color: slategrey;
-}
+/*   background-color: slategrey;
+ */}
+
+.page {
+  padding: 25px 5px;
+/*   background-color: #898989;
+ */}
 
 h1 {
   text-align: center;
@@ -16,15 +21,16 @@ h1 {
   margin-bottom: 30px;
 }
 
-table, th, td {
+/*  table, th, td {
   width: 100%;
-  border: 1px solid;
-}
+  background-color: rgb(251, 251, 250);
+}  */
 
-th {
-  background-color: royalblue;
-  color: rgb(116, 10, 10);
-}
+ th {
+  font-weight:bold;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  caption-side: top;
+} 
 
 tr:hover {background-color: rgb(189, 180, 176);}
 
@@ -69,8 +75,4 @@ tr:hover {background-color: rgb(189, 180, 176);}
   
 }
 
-.page {
-  padding: 5px;
-  background-color: #cae8ca;
-}
 

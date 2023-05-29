@@ -4,7 +4,7 @@ import Navbar from 'react-bootstrap/Navbar';
 
 import { Link } from 'react-router-dom'
 
-function ColorSchemesExample() {
+const NavBar = () =>{
   return (
     <>
       <Navbar bg="dark" variant="dark" fixed='top'>
@@ -13,7 +13,7 @@ function ColorSchemesExample() {
           <Nav className="me-auto gap-3 pl-3">
             <Link to='/'> Inicio </Link> 
             <Link to='/reports'> Informes </Link>
-            {/*<Nav.Link href="#pricing">Pricing</Nav.Link>*/}
+            <Link to='/login'>Admin</Link>
           </Nav>
         </Container>
       </Navbar>
@@ -21,4 +21,4 @@ function ColorSchemesExample() {
   );
 }
 
-export default ColorSchemesExample;
+export default NavBar;

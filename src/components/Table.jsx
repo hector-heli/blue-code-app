@@ -1,58 +1,93 @@
-/* eslint-disable no-unused-vars */
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
+import React, { useState, useEffect }  from "react";
+import { DataTable, Box, Meter, Text } from "grommet";
 
-/*Diseño basado en:  https://blueprintjs.com/docs/#table */
+import { epochTimeToDate } from "../epochTimeToDate";
 
-import React from 'react';
-import { HotkeysProvider } from "@blueprintjs/core";
-import { Column, Table2 } from "@blueprintjs/table";
 
-const Tables = ( {calls} ) => {
-  (() => console.log(Object.keys(calls).length))();
+const columns = [
+  {
+    property: "Id",
+    header: <Text>Id</Text>,
+    primary: true
+  },
+  {
+    property: "Room",
+    header: <Text>Habitación</Text>,
+  },
+
+  {
+    property: "codeAlarm",
+    header: "Código de Alarma"
+  },
+  {
+    property: "epochTime",
+    header: "Hora de Activación"
+  },
+  {
+    property: "unactivateTime",
+    header: "Hora de Cancelación"
+  },
+  {
+    property: "ResponseTime",
+    header: "Tiempo de Respuesta"
+  },
+  {
+    property: "Report",
+    header: "Reporte"
+  },
+
+
+  /* {
+    property: "Good",
+    header: "Good for you",
+    render: (datum) => (
+      <Box pad={{ vertical: "small" }}>
+        <Meter
+          values={[{ value: datum.percent }]}
+          thickness="small"
+          size="small"
+          round="true"
+        />
+      </Box>
+    )
+  } */
+];
+
+
+const Table = ({calls}) =>{
+  const [data, setData] = useState([]);
+
+  useEffect(() =>{
+      setData(newData);    
+  },[calls]);
+
+  const newData = calls.map((call) => {
+    const newCall = {
+      Id:  calls.indexOf(call)+1,
+      Room: call.data.Room,
+      epochTime: epochTimeToDate(call.data.epochTime),
+      codeAlarm: call.data.codeAlarm,
+      activateTime: epochTimeToDate(call.data.activateTime),
+      unactivateTime: epochTimeToDate(call.data.unactivateTime),
+      ResponseTime: call.data.responseTime,
+      Report: "",
+    };
+    return newCall;
+  });
 
   return (
-    <div>
-      <HotkeysProvider>
-        <Table2 numRows= {5}>
-        <Column name="Habitación" />
-        <Column name="Código Alarma"/>
-        <Column name="Hora Activación"/>
-        <Column name="Hora Cancelación"/>
-        <Column name="Tiempo de respuesta"/>
-
-      </Table2>
-      </HotkeysProvider>
-      
-      {/* <Table striped bordered hover variant="dark" className='table'>
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Habitación</th>
-          <th>Código de Alarma</th>
-          <th>Hora de activación</th>
-          <th>Hora de cancelación</th>
-          <th>Tiempo de respuesta</th>
-          <th>Reporte</th>
-
-        </tr>
-      </thead>
-      <tbody>
-        { calls.map( call => (
-          <tr key={call.epochTime}>
-            <td>1</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-        ))}
-      </tbody>
-    </Table> */}
-    </div>
-    
+    <Box align="center">
+      <DataTable
+        resizeable={true}
+        sortable={true}
+        columns={columns}
+        data={data}
+      />
+    </Box>
   );
 }
 
-export default Tables;
+export default Table

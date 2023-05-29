@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import Call from '../models/Call.js';
 
 export const getCalls = async (req, res) => {
@@ -11,8 +12,8 @@ export const getCalls = async (req, res) => {
 
 export const getCallById = async (req, res) => {
   try {
-    const calls = await Call.find(callId);
-    res.json(call);
+    const call = await Call.findById(req.params.callId);
+    res.status(201).Calljson(call);
   } catch (err) {
     console.error(err.message);
   }
