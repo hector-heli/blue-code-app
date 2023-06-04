@@ -1,0 +1,142 @@
+[
+  {
+    "Sourcefile": null,
+    "Include": "",
+    "Includepath": "C:\\Users\\Usuario\\AppData\\Local\\Arduino15\\packages\\esp32\\hardware\\esp32\\2.0.8\\cores\\esp32"
+  },
+  {
+    "Sourcefile": null,
+    "Include": "",
+    "Includepath": "C:\\Users\\Usuario\\AppData\\Local\\Arduino15\\packages\\esp32\\hardware\\esp32\\2.0.8\\variants\\esp32da"
+  },
+  {
+    "Sourcefile": "D:\\app-prototype\\blue-code-app\\ARDUINO\\output\\sketch\\MEGA-ESP32-MONGO.ino.cpp",
+    "Include": "CTBot.h",
+    "Includepath": "C:\\Users\\Usuario\\Documents\\Arduino\\libraries\\CTBot\\src"
+  },
+  {
+    "Sourcefile": "D:\\app-prototype\\blue-code-app\\ARDUINO\\output\\sketch\\MEGA-ESP32-MONGO.ino.cpp",
+    "Include": "ArduinoJson.h",
+    "Includepath": "C:\\Users\\Usuario\\Documents\\Arduino\\libraries\\ArduinoJson\\src"
+  },
+  {
+    "Sourcefile": "D:\\app-prototype\\blue-code-app\\ARDUINO\\output\\sketch\\MEGA-ESP32-MONGO.ino.cpp",
+    "Include": "WiFi.h",
+    "Includepath": "C:\\Users\\Usuario\\AppData\\Local\\Arduino15\\packages\\esp32\\hardware\\esp32\\2.0.8\\libraries\\WiFi\\src"
+  },
+  {
+    "Sourcefile": "D:\\app-prototype\\blue-code-app\\ARDUINO\\output\\sketch\\MEGA-ESP32-MONGO.ino.cpp",
+    "Include": "HTTPClient.h",
+    "Includepath": "C:\\Users\\Usuario\\AppData\\Local\\Arduino15\\packages\\esp32\\hardware\\esp32\\2.0.8\\libraries\\HTTPClient\\src"
+  },
+  {
+    "Sourcefile": "D:\\app-prototype\\blue-code-app\\ARDUINO\\output\\sketch\\MEGA-ESP32-MONGO.ino.cpp",
+    "Include": "WiFiClientSecure.h",
+    "Includepath": "C:\\Users\\Usuario\\AppData\\Local\\Arduino15\\packages\\esp32\\hardware\\esp32\\2.0.8\\libraries\\WiFiClientSecure\\src"
+  },
+  {
+    "Sourcefile": "D:\\app-prototype\\blue-code-app\\ARDUINO\\output\\sketch\\MEGA-ESP32-MONGO.ino.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\Usuario\\Documents\\Arduino\\libraries\\CTBot\\src\\CTBot.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\Usuario\\Documents\\Arduino\\libraries\\CTBot\\src\\CTBotInlineKeyboard.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\Usuario\\Documents\\Arduino\\libraries\\CTBot\\src\\CTBotReplyKeyboard.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\Usuario\\Documents\\Arduino\\libraries\\CTBot\\src\\CTBotSecureConnection.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\Usuario\\Documents\\Arduino\\libraries\\CTBot\\src\\CTBotStatusPin.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\Usuario\\Documents\\Arduino\\libraries\\CTBot\\src\\CTBotWifiSetup.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\Usuario\\Documents\\Arduino\\libraries\\CTBot\\src\\Utilities.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\Usuario\\AppData\\Local\\Arduino15\\packages\\esp32\\hardware\\esp32\\2.0.8\\libraries\\WiFi\\src\\WiFi.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\Usuario\\AppData\\Local\\Arduino15\\packages\\esp32\\hardware\\esp32\\2.0.8\\libraries\\WiFi\\src\\WiFiAP.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\Usuario\\AppData\\Local\\Arduino15\\packages\\esp32\\hardware\\esp32\\2.0.8\\libraries\\WiFi\\src\\WiFiClient.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\Usuario\\AppData\\Local\\Arduino15\\packages\\esp32\\hardware\\esp32\\2.0.8\\libraries\\WiFi\\src\\WiFiGeneric.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\Usuario\\AppData\\Local\\Arduino15\\packages\\esp32\\hardware\\esp32\\2.0.8\\libraries\\WiFi\\src\\WiFiMulti.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\Usuario\\AppData\\Local\\Arduino15\\packages\\esp32\\hardware\\esp32\\2.0.8\\libraries\\WiFi\\src\\WiFiSTA.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\Usuario\\AppData\\Local\\Arduino15\\packages\\esp32\\hardware\\esp32\\2.0.8\\libraries\\WiFi\\src\\WiFiScan.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\Usuario\\AppData\\Local\\Arduino15\\packages\\esp32\\hardware\\esp32\\2.0.8\\libraries\\WiFi\\src\\WiFiServer.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\Usuario\\AppData\\Local\\Arduino15\\packages\\esp32\\hardware\\esp32\\2.0.8\\libraries\\WiFi\\src\\WiFiUdp.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\Usuario\\AppData\\Local\\Arduino15\\packages\\esp32\\hardware\\esp32\\2.0.8\\libraries\\HTTPClient\\src\\HTTPClient.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\Usuario\\AppData\\Local\\Arduino15\\packages\\esp32\\hardware\\esp32\\2.0.8\\libraries\\WiFiClientSecure\\src\\WiFiClientSecure.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\Usuario\\AppData\\Local\\Arduino15\\packages\\esp32\\hardware\\esp32\\2.0.8\\libraries\\WiFiClientSecure\\src\\esp_crt_bundle.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\Usuario\\AppData\\Local\\Arduino15\\packages\\esp32\\hardware\\esp32\\2.0.8\\libraries\\WiFiClientSecure\\src\\ssl_client.cpp",
+    "Include": "",
+    "Includepath": null
+  }
+]

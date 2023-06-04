@@ -25,7 +25,7 @@ export const signupHandler = async (req, res) => {
 
     // Saving the User Object in Mongodb
     const savedUser = await newUser.save();
-
+    console.log(savedUser)
     // Create a token
     const token = jwt.sign({ id: savedUser._id }, SECRET, {
       expiresIn: 86400, // 24 hours

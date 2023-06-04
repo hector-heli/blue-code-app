@@ -12,7 +12,7 @@ router.use((req, res, next) => {
   next();
 });
 
-router.post("/signup", [checkExistingUser, checkExistingRole], signupHandler);
+router.post("/signup", signupHandler, [checkExistingUser, checkExistingRole]);
 
 router.post("/signin", signinHandler);
 

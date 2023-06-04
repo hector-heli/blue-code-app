@@ -7,7 +7,7 @@ import Room from '../components/Room'
 const Rooms = ({ calls }) => {
   const [ rooms, setRooms ] = useState([]);
 
-  const roomsNumber = 15;
+  const roomsNumber = 10;
 
   // Función para obtener todos los llamados
   

@@ -1,26 +1,23 @@
-// eslint-disable-next-line no-unused-vars
+/* eslint-disable no-unused-vars */
 import React, {useEffect, useState} from 'react'
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import axios from 'axios';
 
 import './App.css';
+import { history } from './helpers/history.js';
 
 import Rooms from './views/Rooms';
-import Report from "./views/Report";
-import Login from './views/Login';
-
+import Login from './views/Login'
+import Report from './views/Report';
 import NavBar from './components/NavBar';
 import Footer from './components/Footer'
+import RouteGuard from "./components/RouteGuard"
 
 
 //import PruebaComponente from './components/PruebaComponente'
 
 const App = () => {
   const [ calls, setCalls ] = useState([]);
-
- /*  useEffect(() => {
-    fetchData();
-  }, []); */
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -48,19 +45,19 @@ const App = () => {
 
   return (
     <div>
-      <Router>
+      <Router history={history}>
         <NavBar />
         <Routes>
           <Route path='/' element = {<Rooms calls={calls} />} />
-          <Route path='/reports' element = {<Report calls={calls} /> } />
+          <Route path='/reports' element = {<Report calls={calls}/> } />
           <Route path='/login' element = {<Login /> } />
-
         </Routes>
+        {/* <Navigate to="/" />  */}
+
         <Footer />
       </Router>
     </div>
-
-    
+   
   )
 }
 

@@ -12,7 +12,7 @@ const NavBar = () =>{
           <Navbar.Brand href="#home">COSERTEC SAS</Navbar.Brand>
           <Nav className="me-auto gap-3 pl-3">
             <Link to='/'> Inicio </Link> 
-            <Link to='/reports'> Informes </Link>
+            {/* <Link to='/reports'> Informes </Link> */}
             <Link to='/login'>Admin</Link>
           </Nav>
         </Container>

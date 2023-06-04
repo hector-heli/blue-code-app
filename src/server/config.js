@@ -7,6 +7,6 @@ export const MONGODB_URI =
 export const PORT = process.env.PORT || 4000;
 export const SECRET = "student23";
 
-export const ADMIN_EMAIL = process.env.ADMIN_EMAIL || "admin@localhost";
-export const ADMIN_USERNAME = process.env.ADMIN_USERNAME || "admin";
-export const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || "admin";
+export const ADMIN_EMAIL = process.env.ADMIN_EMAIL || "23.hectorheli@gmail.com";
+export const ADMIN_USERNAME = process.env.ADMIN_USERNAME || "Héctor Helí Ruiz García";
+export const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || "adminStudent23";

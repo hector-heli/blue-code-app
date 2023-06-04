@@ -2,7 +2,7 @@ import axios from "axios";
 
 const getAllCalls = async () => {
   try {
-    const calls = await axios.get('http://localhost:3000/calls');
+    const calls = await axios.get('http://localhost:3000/api/calls');
     return calls.data;
   } catch (error) {
     console.error(error);

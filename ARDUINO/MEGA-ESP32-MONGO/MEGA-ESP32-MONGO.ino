@@ -126,8 +126,9 @@ void buildDataArray(int index){
   if(std::string(alarmCode[index][1]) == "cancel"){ 
     doc ["data"]["unactivateTime"] = epochTime;
     return;
-  };
-  doc ["data"]["activateTime"] = epochTime;
+  }else{
+    doc ["data"]["activateTime"] = epochTime;
+  }
 }
 
 void mensajeTelegram(String room){

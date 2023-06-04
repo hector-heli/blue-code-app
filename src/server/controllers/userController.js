@@ -41,3 +41,7 @@ export const getUser = async (req, res) => {
   const user = await User.findById(req.params.userId);
   return res.json(user);
 };
+
+export const deleteUserById = async (req, res) => {
+  return res.json('Deleting user')
+};
