@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-vars */
-import  { createContext } from "react"
+import { createContext } from "react"
 
-export const loggedContext = createContext(false)
+export const ReportContext = createContext();
+export const CallsContext = createContext();

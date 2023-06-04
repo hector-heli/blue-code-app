@@ -1,10 +1,12 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 // eslint-disable-next-line no-unused-vars
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import Room from '../components/Room'
+import { CallsContext } from '../ContextProvider';
 
-const Rooms = ({ calls }) => {
+const Rooms = () => {
+  const calls = useContext(CallsContext);
   const [ rooms, setRooms ] = useState([]);
 
   const roomsNumber = 10;

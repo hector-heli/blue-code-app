@@ -15,6 +15,7 @@ const Room = ( {call} ) => {
       changeBgColor(backgroundColor);
     }, 1000);
     return () => clearInterval(interval);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [bgColor, backgroundColor]);
 
   const changeBgColor = (backgroundColor) => {
