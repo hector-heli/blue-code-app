@@ -6,7 +6,8 @@ import React, { useState } from 'react';
 import { ReportContext } from '../ContextProvider'
 import Sidebar from '../components/SideBar';
 import Table from '../components/Table';
-import ResumeReport from '../components/ResumeReport';
+import ResumeReport from '../components/AnaliticsReport';
+import Users from '../components/Users';
 
 const Reports = () => {
   const [reportSelected, setReportSelected] = useState(() => <Table />)
@@ -20,14 +21,23 @@ const Reports = () => {
             <Table />
           </div>
         ) ;
+
       case 'response-time':
-        
         return (
           <div>
             <h3> Análisis de respuestas </h3>
             <ResumeReport />
           </div>
         ) ;
+
+      case 'roles-assigments':
+        return (
+          <div>
+            <h3> Análisis de respuestas </h3>
+            <Users />
+          </div>
+        ) ;
+      
       default: return <p>no disponible</p>
     }
   }

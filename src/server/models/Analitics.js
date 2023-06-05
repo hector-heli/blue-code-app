@@ -3,10 +3,12 @@ import { Schema, model } from "mongoose";
 const analiticsSchema = new Schema(
   {
     room: String,
-    alarmCode: String,
+    alarmCode: [{
+      type: String
+    }],
     activateTime: Date,
     incidentCareTime: Date,
-    timeElapsed: Number,
+    timeElapsed: Date,
     report: String,
     terminated: Boolean
   },
@@ -16,4 +18,4 @@ const analiticsSchema = new Schema(
   }
 )
 
-export default model('Report', analiticsSchema);
+export default model('Analitics', analiticsSchema);

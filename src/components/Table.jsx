@@ -45,8 +45,6 @@ const Table = () => {
       codeAlarm: call.data.codeAlarm,
       activateTime: epochTimeToDate(call.data.activateTime),
       unactivateTime: epochTimeToDate(call.data.unactivateTime),
-      ResponseTime: call.data.responseTime,
-      Report: "",
     };
     return newCall;
   });
