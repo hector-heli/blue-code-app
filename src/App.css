@@ -1,78 +1,81 @@
 @import "@blueprintjs/popover2/lib/css/blueprint-popover2.css";
-
 #root {
-  max-width: 100%;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: left;
-/*   background-color: slategrey;
- */}
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: left;
+    /*   background-color: slategrey;
+ */
+}
 
 .page {
-  padding: 25px 5px;
-/*   background-color: #898989;
- */}
+    max-width: 100%;
+    padding: 25px 5px;
+    margin: 0 0 600px 0;
+    /* background-color: #898989;
+ */
+}
 
 h1 {
-  text-align: center;
-  position: -webkit-sticky;
-  top: 0;
-  margin-top:20px;
-  margin-bottom: 30px;
+    text-align: center;
+    position: -webkit-sticky;
+    top: 0;
+    margin-top: 20px;
+    margin-bottom: 30px;
 }
+
 
 /*  table, th, td {
   width: 100%;
   background-color: rgb(251, 251, 250);
 }  */
 
- th {
-  font-weight:bold;
-  font-family:Verdana, Geneva, Tahoma, sans-serif;
-  caption-side: top;
-} 
+th {
+    font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    caption-side: top;
+}
 
-tr:hover {background-color: rgb(189, 180, 176);}
+tr:hover {
+    background-color: rgb(189, 180, 176);
+}
 
 .card {
-  padding: 0.5rem;
-  margin-block: 1rem;
-  margin-inline: 1rem;
-  flex:auto;
-  width: max-content;
-  background-color: bisque;
+    padding: 0.5rem;
+    margin-block: 1rem;
+    margin-inline: 1rem;
+    flex: auto;
+    width: max-content;
+    background-color: bisque;
 }
 
 .blue {
-  padding: 0.5rem;
-  background-color:RoyalBlue;
+    padding: 0.5rem;
+    background-color: RoyalBlue;
 }
 
-.green{
-  padding: 0.5rem;
-  background-color: aquamarine;
+.green {
+    padding: 0.5rem;
+    background-color: aquamarine;
 }
 
-.bath{
-  padding: 0.5rem;
-  background-color: LightPink;
+.bath {
+    padding: 0.5rem;
+    background-color: LightPink;
 }
 
-.cancel{
-  padding: 0.5rem;
-  /*background-color: azure;*/
+.cancel {
+    padding: 0.5rem;
+    /*background-color: azure;*/
 }
 
-.footer{
-  width: 100%;
-  position:fixed;
-  bottom: 0px;
-  right: 0px;
-  z-index: 10000;
-  background-color: black;
-  color: azure;
-  text-align: end;
-  
+.footer {
+    width: 100%;
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+    z-index: 10000;
+    background-color: black;
+    color: azure;
+    text-align: end;
 }
-
-

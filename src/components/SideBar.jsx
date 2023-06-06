@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-vars */
 import React, { useContext } from "react";
-import {Nav} from "react-bootstrap";
+import Nav from "react-bootstrap/Nav";
 
-import '../views/styles/Dashboard.css';
+//import '../views/styles/Dashboard.css';
 import { ReportContext } from "../ContextProvider";
 
 const Sidebar = () => {
@@ -10,22 +10,22 @@ const Sidebar = () => {
 
   return (
       <>
-          <Nav className="col-md-2 d-none d-md-block bg-light sidebar"
+        <Nav className="max-width-100 hover:shadow-lg justify-content-end bg-dark"
             activeKey="/"
             onSelect={selectedKey => setReportSelected(selectedKey)}
           >
-              <div className="sidebar-sticky"></div>
+              {/* <div className="sidebar-sticky"></div> */}
           <Nav.Item>
-              <Nav.Link eventKey = 'general-report' active>Reporte General</Nav.Link>
+              <Nav.Link eventKey = 'general-report'> Historial de eventos</Nav.Link>
           </Nav.Item>
           <Nav.Item>
-              <Nav.Link eventKey="response-time">Tiempo de atención</Nav.Link>
+              <Nav.Link eventKey="response-time">Tiempos de respuesta</Nav.Link>
           </Nav.Item>
           <Nav.Item>
-              <Nav.Link eventKey="scedules-creation">Creación de turnos</Nav.Link>
+              <Nav.Link eventKey="schedules-creation">Crear turnos</Nav.Link>
           </Nav.Item>
           <Nav.Item>
-              <Nav.Link eventKey="roles-assigments">Asignación de Roles</Nav.Link>
+              <Nav.Link eventKey="roles-assigments">Gestión de usuarios</Nav.Link>
           </Nav.Item>
           <Nav.Item>
               <Nav.Link eventKey="disabled" hidden>

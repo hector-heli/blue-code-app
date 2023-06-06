@@ -1,0 +1,174 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Bluecode project",
+    "dateExported": "2023-06-06T16:30:51.672Z",
+    "version": "1.1",
+    "folders": [
+        {
+            "_id": "732889df-097a-48c5-8ae0-c1d833cbd806",
+            "name": "Calls",
+            "containerId": "",
+            "created": "2023-05-23T00:38:50.678Z",
+            "sortNum": 10000
+        },
+        {
+            "_id": "9520d236-2b5d-4a9b-a1e3-4991a2314fe0",
+            "name": "Reports",
+            "containerId": "",
+            "created": "2023-05-23T00:39:07.078Z",
+            "sortNum": 20000
+        },
+        {
+            "_id": "ad716640-686a-4c50-928a-fae391d8b9f8",
+            "name": "Users",
+            "containerId": "",
+            "created": "2023-05-23T00:39:51.590Z",
+            "sortNum": 30000
+        },
+        {
+            "_id": "4d3867bd-6a53-4bb1-97df-fcf752229bbd",
+            "name": "Roles",
+            "containerId": "",
+            "created": "2023-05-23T00:40:07.503Z",
+            "sortNum": 40000
+        },
+        {
+            "_id": "cd54aeb8-b27e-4d85-9a10-47c70e995041",
+            "name": "Auth",
+            "containerId": "",
+            "created": "2023-05-29T01:32:32.563Z",
+            "sortNum": 50000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "251812d0-db30-4040-86e8-f70858f406b3",
+            "colId": "de8dbb98-f1d8-4429-8521-5ca85eef7381",
+            "containerId": "732889df-097a-48c5-8ae0-c1d833cbd806",
+            "name": "getCalls",
+            "url": "http://localhost:3000/calls",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2023-05-23T00:40:38.104Z",
+            "modified": "2023-05-23T00:41:48.602Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "98433c69-38c2-42eb-a053-c5d8bb8d95a8",
+            "colId": "de8dbb98-f1d8-4429-8521-5ca85eef7381",
+            "containerId": "9520d236-2b5d-4a9b-a1e3-4991a2314fe0",
+            "name": "getReports",
+            "url": "http://localhost:3000/api/reports",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2023-05-23T00:42:46.198Z",
+            "modified": "2023-06-05T02:57:59.988Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "22133814-bf04-4fcf-b45b-1983f7e4a4e4",
+            "colId": "de8dbb98-f1d8-4429-8521-5ca85eef7381",
+            "containerId": "ad716640-686a-4c50-928a-fae391d8b9f8",
+            "name": "getUsers",
+            "url": "http://localhost:3000/api/users",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2023-06-05T06:49:20.054Z",
+            "modified": "2023-06-05T06:49:51.088Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "e10d4cf2-ce1b-40f4-9cbc-0f0e74b3d92e",
+            "colId": "de8dbb98-f1d8-4429-8521-5ca85eef7381",
+            "containerId": "9520d236-2b5d-4a9b-a1e3-4991a2314fe0",
+            "name": "postReport",
+            "url": "http://localhost:3000/api/reports",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2023-05-23T00:43:36.653Z",
+            "modified": "2023-06-05T03:14:00.296Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"room\": \"Hab1\",\n  \"alarmCode\": \"blue\",\n  \"activateTime\": 1684170358,\n  \"incidentCareTime\":1684170909,\n  \"timeElapsed\": 30.5,\n  \"report\": \"\",\n  \"terminated\": false\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "205b5426-8c84-4990-bb75-2b0159841a20",
+            "colId": "de8dbb98-f1d8-4429-8521-5ca85eef7381",
+            "containerId": "ad716640-686a-4c50-928a-fae391d8b9f8",
+            "name": "createUsers",
+            "url": "http://localhost:3000/api/users",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2023-06-05T06:49:59.248Z",
+            "modified": "2023-06-05T06:52:56.930Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"username\": \"Moderador 1\",\n    \"email\": \"moderador1@gmail.com\",\n    \"password\": \"student\",\n    \"roles\": [\n      \"6474085a1fc49100a82fb373\"\n    ]\n  }",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "b0571087-a70b-4299-b6d9-4978d1813d23",
+            "colId": "de8dbb98-f1d8-4429-8521-5ca85eef7381",
+            "containerId": "cd54aeb8-b27e-4d85-9a10-47c70e995041",
+            "name": "signup",
+            "url": "localhost:3000/api/auth/signup?",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2023-05-29T01:32:44.505Z",
+            "modified": "2023-06-05T06:55:48.116Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"username\": \"moderador1\",\n  \"email\": \"moderador1@gmail.com\",\n  \"password\": \"student\",\n  \"roles\": [\"moderator\", \"user\"]\n}",
+                "form": []
+            },
+            "tests": []
+        }
+    ]
+}

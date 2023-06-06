@@ -33,7 +33,7 @@ const Reports = () => {
       case 'roles-assigments':
         return (
           <div>
-            <h3> Análisis de respuestas </h3>
+            <h3> Gestión de ususa </h3>
             <Users />
           </div>
         ) ;

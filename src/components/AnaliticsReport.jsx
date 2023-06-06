@@ -2,7 +2,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect, useContext }  from "react";
-import { DataTable, Box, Text, CheckBox } from "grommet";
+import { DataTable, Box, Text, CheckBoxGroup } from "grommet";
 import axios from "axios";
 
 import { epochTimeToDate } from "../epochTimeToDate";
@@ -16,46 +16,53 @@ const columns = [
     primary: true
   },
   {
-    property: "Room",
+    property: "room",
     header: <Text>Habitación</Text>,
   },
 
   {
-    property: "codeAlarm",
+    property: "alarmCode",
     header: "Código de Alarma"
   },
   {
-    property: "epochTime",
+    property: "activateTime",
     header: "Hora de Activación"
   },
   {
-    property: "unactivateTime",
+    property: "incidentCareTime",
     header: "Hora de Cancelación"
   },
   {
-    property: "ResponseTime",
+    property: "timeElapsed",
     header: "Tiempo de Respuesta"
   },
   {
-    property: "Report",
+    property: "report",
     header: "Reporte"
+  },
+  {
+    property: "terminated",
+    header: "Finalizado"
   }
 ];
 
 const AnaliticsReport = () =>{
   const [data, setData] = useState([]);
-  //const [analiticsData, setAnaliticsData] = useState([]);
+  const [report, setReport] = useState([]);
+  const [queryFlag, setQueryFlag] = useState(false);
+
   const calls = useContext(CallsContext);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
       fetchData();
     }, 4000);
+
     return () => {
       clearInterval(intervalId);
-    };
+    }; 
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [setInterval]);
+  }, [queryFlag]);
 
   const fetchData = async () => {
     const newData = await getAnalitics();
@@ -66,7 +73,6 @@ const AnaliticsReport = () =>{
     try {
       const res = await axios.get('http://localhost:3000/api/reports');
         return res.data;
-      // return res.data;
     } catch (error) {
       console.error(error);
     }
@@ -76,55 +82,29 @@ const AnaliticsReport = () =>{
     console.log( 'creo uno nuevo');
   };
 
-  const updateAnaliticsById = async (id, data) => {
-    console.log( 'actualizo existente ' + id);
+  const updateAnaliticsById = async (id, newData) => {
+    try {
+      const res = await axios.put(`http://localhost:3000/api/reports/${id}`, newData);
+      console.log(res.data);
+    } catch (error) {
+      console.error(error);
+    }
   }
 
-  const newData = () => {
-      calls.map((call) => {
-      let newReport = {};
-      console.log( data.find({"room":call.data.Room}) );
+  const newData = 
+    data.length === 0
+    ? null
+    : calls.map(call => {
+        //let dataReport = {}
+        const newReport = data.findLast(room => room.room === call.data.Room); 
+        console.log(newReport);
+        //return newReport;
+      });
 
-      if (data.findLast({"room":call.data.Room}).alarmCode === 'cancel' || !data.findLast({"room":call.data.Room})) {
-        newReport = {
-          Room:   call.data.Room,
-          epochTime: epochTimeToDate(call.data.epochTime),
-          codeAlarm: call.data.codeAlarm,
-          activateTime: epochTimeToDate(call.data.activateTime),
-          unactivateTime: epochTimeToDate(call.data.unactivateTime),
-          ResponseTime: call.data.responseTime,
-          Report: "",
-        };
-        createAnalitics(data.findLast({"room":call.data.Room})._id, newReport);
-        return newReport;
-      } else {
-        newReport = {
-          Room:   call.data.Room,
-          epochTime: epochTimeToDate(call.data.epochTime),
-          codeAlarm: [
-            ...data.findLast({"room":call.data.Room}).codeAlarm, 
-            call.data.codeAlarm
-          ],
-          activateTime: [
-            ...data.findLast({"room":call.data.Room}).codeAlarm, 
-            epochTimeToDate(call.data.activateTime)
-          ],
-          unactivateTime: epochTimeToDate(call.data.unactivateTime),
-          ResponseTime: timeElapsed(epochTimeToDate(call.data.unactivateTime),epochTimeToDate(call.data.activateTime))
-        };
-        updateAnaliticsById(newReport);
-        return newReport;
-      }
-    })
-  };
-
-  
+  // console.log(data);
 
 
-
-  
-
-  
+    
 
   const timeElapsed = (date1, date2) => {
   /*   const date1 = new Date('2023-06-01');
@@ -154,7 +134,7 @@ const AnaliticsReport = () =>{
         resizeable={true}
         sortable={true}
         columns={columns}
-        data={newData}
+        data={data}
         background={{ 
           header: "dark-2",
           body: ["white", "light-2"],
