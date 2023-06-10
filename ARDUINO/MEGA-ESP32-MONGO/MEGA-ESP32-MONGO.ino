@@ -123,12 +123,12 @@ void buildDataArray(int index){
   doc ["data"]["Room"] = alarmCode[index][0];
   doc ["data"]["codeAlarm"] = alarmCode[index][1];
   if(std::string(alarmCode[index][1]) == "blue") mensajeTelegram(alarmCode[index][0]);
-  if(std::string(alarmCode[index][1]) == "cancel"){ 
+  /* if(std::string(alarmCode[index][1]) == "cancel"){ 
     doc ["data"]["unactivateTime"] = epochTime;
     return;
   }else{
     doc ["data"]["activateTime"] = epochTime;
-  }
+  } */
 }
 
 void mensajeTelegram(String room){

@@ -3,11 +3,9 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect, useContext } from "react";
 import { DataTable, Box, CheckBoxGroup, Text } from "grommet";
-import axios from "axios";
 
 import { epochTimeToDate } from "../epochTimeToDate";
-import { Next } from "react-bootstrap/esm/PageItem";
-
+import { getUsers } from '../helpers/CrudUsers';
 
 const columns = [
   {
@@ -31,12 +29,11 @@ const columns = [
     property: "role",
     header: "Roles",
     render: user => (
-      <Box pad="medium">
+      <Box pad="small">
         <CheckBoxGroup 
           options={["usuario", "moderador", "admin"]} 
-          gap="small"
-          defaultValue={'usuario'}
           value={user.roles}
+          gap="small"
         />
       </Box>
     ),
@@ -55,17 +52,6 @@ const Table = () => {
     const data = await getUsers();
     setUsers(data);
   };
-
-  const getUsers = async () => {
-    try {
-      const response = await axios.get('http://localhost:3000/api/users');
-      if (response.data !== []) return response.data; else Next;
-      // return response.data;
-
-    } catch (error) {
-      console.error(error);
-    }
-  }
 
   const newData = users.map((user) => {
     const newUser = {

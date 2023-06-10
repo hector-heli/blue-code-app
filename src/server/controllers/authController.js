@@ -5,13 +5,14 @@ import { SECRET } from "../config.js";
 
 export const signupHandler = async (req, res) => {
   try {
-    const { username, email, password, roles } = req.body;
+    const { username, email, password, telegramCallId, roles } = req.body;
 
     // Creating a new User Object
     const newUser = new User({
       username,
       email,
       password,
+      telegramCallId //
     });
 
     // checking for roles
