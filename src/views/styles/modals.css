@@ -1,0 +1,41 @@
+.modal{
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  right: 0;
+  max-width: 100%;
+  min-height: 100vh;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal.is-open{
+  display: flex;
+}
+
+.modal-container{
+  position: relative;
+  padding: 1rem;
+  overflow-y: auto;
+  min-width: 380px;
+  max-width: 480px;
+  min-height: 100px;
+  max-height: 80vh ;
+  background-color: aliceblue;
+}
+
+.modal-close{
+  position: absolute;
+  top: 0.1rem;
+  right: 0.1rem;
+}
+
+.create-button{
+  position: relative;
+  right:0;
+  margin-bottom: 1rem;
+
+
+}

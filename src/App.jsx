@@ -14,8 +14,7 @@ import NavBar from './components/NavBar';
 import Footer from './components/Footer'
 import { CallsContext } from './ContextProvider';
 import User from './server/models/User';
-// import RouteGuard from "./components/RouteGuard"
-
+import SignUp from './components/SignUp';
 
 //import PruebaComponente from './components/PruebaComponente'
 
@@ -48,6 +47,7 @@ const App = () => {
           <Route path='/' element = {<Rooms />} />
           <Route path='/reports' element = {<Report/> } />
           <Route path='/login' element = {<Login /> } />
+          <Route path='/signup' element = {<SignUp />} />
         </Routes>
 
         <Footer />

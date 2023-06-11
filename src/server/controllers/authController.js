@@ -5,11 +5,11 @@ import { SECRET } from "../config.js";
 
 export const signupHandler = async (req, res) => {
   try {
-    const { username, email, password, telegramCallId, roles } = req.body;
+    const { name, email, password, telegramCallId, roles } = req.body;
 
     // Creating a new User Object
     const newUser = new User({
-      username,
+      name,
       email,
       password,
       telegramCallId //
@@ -20,7 +20,7 @@ export const signupHandler = async (req, res) => {
       const foundRoles = await Role.find({ name: { $in: roles } });
       newUser.roles = foundRoles.map((role) => role._id);
     } else {
-      const role = await Role.findOne({ name: "user" });
+      const role = await Role.findOne({ name: "usuario" });
       newUser.roles = [role._id];
     }
 

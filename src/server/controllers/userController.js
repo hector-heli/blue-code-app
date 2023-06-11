@@ -6,6 +6,7 @@ export const createUser = async (req, res) => {
     const { username, email, password, telegramCallId, roles } = req.body;
 
     const rolesFound = await Role.find({ name: { $in: roles } });
+    console.log(rolesFound);
 
     // creating a new User
     const user = new User({
@@ -13,7 +14,7 @@ export const createUser = async (req, res) => {
       email,
       password,
       telegramCallId,
-      roles: rolesFound.map((role) => role._id),
+      roles: rolesFound.map((role) => role.name),
     });
 
     // encrypting password
@@ -26,7 +27,8 @@ export const createUser = async (req, res) => {
       _id: savedUser._id,
       username: savedUser.username,
       email: savedUser.email,
-      roles: savedUser.roles,
+      telegramCallId: savedUser.telegramCallId,
+      roles: savedUser.roles.name,
     });
   } catch (error) {
     console.error(error);
@@ -34,7 +36,7 @@ export const createUser = async (req, res) => {
 };
 
 export const getUsers = async (req, res) => {
-  const users = await User.find();
+  const users = await User.find().populate('roles');
   console.log(users);
 
   return res.json(users);

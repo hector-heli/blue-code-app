@@ -4,7 +4,7 @@ export const ROLES = ["usuario", "moderador", "admin"];
 
 const roleSchema = new Schema(
   {
-    _user: { type: Number, ref: "User" },
+    //_user: { type: Number, ref: "User" },
     name: String,
   },
   {

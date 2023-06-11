@@ -16,15 +16,12 @@ const userSchema = new Schema(
       required: true,
     },
     telegramCallId: {
-      type:String,
-      unique: true,
+      type:String
     },
     roles: [{
       ref: "Role",
       type: Schema.Types.ObjectId,
-    }],
-      /* type: Array,
-      default: 'user', */
+    }]
   },
   {
     timestamps: true,

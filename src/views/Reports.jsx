@@ -5,12 +5,12 @@ import React, { useState } from 'react';
 
 import { ReportContext } from '../ContextProvider'
 import Sidebar from '../components/SideBar';
-import Table from '../components/Table';
+import CallsTable from '../components/CallsTable';
 import ResumeReport from '../components/AnaliticsReport';
-import Users from '../components/Users';
+import UsersTable from '../components/UsersTable';
 
 const Reports = () => {
-  const [reportSelected, setReportSelected] = useState(() => <Table />)
+  const [reportSelected, setReportSelected] = useState(() => <CallsTable />)
   
   const reportSwitch = () =>{
     switch (reportSelected) {
@@ -18,7 +18,7 @@ const Reports = () => {
         return (
           <div>
             <h3> Historial de eventos </h3>
-            <Table />
+            <CallsTable />
           </div>
         ) ;
 
@@ -33,8 +33,8 @@ const Reports = () => {
       case 'roles-assigments':
         return (
           <div>
-            <h3> Gestión de ususa </h3>
-            <Users />
+            <h3> Gestión de usuarios </h3>
+            <UsersTable />
           </div>
         ) ;
       

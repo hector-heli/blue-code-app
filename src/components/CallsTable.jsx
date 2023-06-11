@@ -29,7 +29,7 @@ const columns = [
 ];
 
 
-const Table = () => {
+const CallsTable = () => {
   const [data, setData] = useState([]);
   const calls = useContext(CallsContext);
 
@@ -51,7 +51,8 @@ const Table = () => {
 
   return ( 
     <Box align = "center" >
-      <DataTable resizeable = { true }
+      <DataTable 
+        resizeable = { true }
         sortable = { true }
         columns = { columns }
         data = { data }
@@ -68,4 +69,4 @@ const Table = () => {
   );
 }
 
-export default Table
+export default CallsTable
