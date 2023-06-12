@@ -51,3 +51,24 @@ export const deleteUserById = async (req, res) => {
   return res.json('Deleting user')
 };
 
+export const updateUserById = async (req, res) => {
+  const { userId } = req.params; // Obtén el ID del usuario de los parámetros de la solicitud
+  const updatedData = req.body; // Obtén los datos actualizados del usuario del cuerpo de la solicitud
+
+  try {
+    const user = await User.findByIdAndUpdate(userId, updatedData, { new: true });
+    // La función findByIdAndUpdate buscará y actualizará el usuario por su ID.
+    // El tercer parámetro { new: true } devuelve el documento actualizado en la respuesta.
+
+    if (!user) {
+      return res.status(404).json({ message: 'Usuario no encontrado' });
+    }
+
+    res.status(200).json(user);
+  } catch (error) {
+    console.error('Error al actualizar el usuario:', error);
+    res.status(500).json({ message: 'Error interno del servidor' });
+  }
+};
+
+

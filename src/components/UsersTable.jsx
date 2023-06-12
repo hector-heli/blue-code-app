@@ -10,17 +10,12 @@ import { getUsers } from '../helpers/CrudUsers';
 import SignUp from "./SignUp";
 import Modal from "./Modal";
 
-import { UsersContext } from "../ContextProvider";
+import { UsersContext, initialCurrentUserState } from "../ContextProvider";
 
 const UsersTable = () => {
   const [users, setUsers] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
-  const [currentUser, setCurrentUser] = useState({
-    email:"",
-    password:"",
-    telegramCallId:"",
-    roles:["usuario","",""],
-  });
+  const [currentUser, setCurrentUser] = useState(initialCurrentUserState);
   const [creatingUser, setCreatingUser] = useState(true);
   
 
@@ -37,6 +32,11 @@ const UsersTable = () => {
   {
     property: "email",
     header: "e-mail"
+  },
+  {
+    property: "password",
+    render: password => (<Text> ****** </Text>),
+    header: "password"
   },
   {
     property: "telegramCallId",
@@ -67,13 +67,15 @@ const UsersTable = () => {
         <Button 
           label="modificar" 
           icon={<Update size="medium" color="black"/>}
-          onClick={()=>updateUser(user)}      
+          onClick={()=>updateUser(user)} 
+          defaultValue={false}     
         />  
 
         <Button 
           label="eliminar" 
           icon={<Trash size="medium" color="black"/>}
           onClick={() => console.log(user)}
+          defaultValue={false} 
         />
       </Box>
     ),
@@ -96,21 +98,34 @@ const UsersTable = () => {
       Id: users.indexOf(user) + 1,
       userName: user.username,
       email: user.email,
+      password: user.password,
       telegramCallId: user.telegramCallId,
       roles: user.roles,
-      
     };
     return newUser;
   }); 
 
-  const updateUser = (user) => {
-    //console.log(user);
+  const updateUser = async(user) => {
+    console.log(currentUser);
+
     setCreatingUser(false);
-    setCurrentUser(user);
+    console.log(user);
+    await setCurrentUser({
+      userId: user._id,
+      username: user.userName,
+      password: user.password,  
+      email: user.email,
+      telegramCallId: user.telegramCallId,
+      roles: user.roles
+    });
     setIsOpen(true);
+    (console.log(currentUser));
+
   }
 
-  const createUser = () => {
+  const createUser = (e) => {
+    e.preventDefault();
+    setCurrentUser(initialCurrentUserState);
     setCreatingUser(true);
     setIsOpen(true);
   }
@@ -126,6 +141,7 @@ const UsersTable = () => {
         closeModal={closeModal}
       > 
         <SignUp 
+          closeModal={closeModal}
           creatingUser={creatingUser}
           setCreatingUser={setCreatingUser}
         />
@@ -139,7 +155,9 @@ const UsersTable = () => {
           icon={<UserAdd size="medium" color="black"/>}
           onClick={createUser}
         />
-        <DataTable resizeable = { true }
+        <DataTable 
+          resizeable = { true }
+          paginate={true}
           sortable = { true }
           columns = { columns }
           data = { newData }

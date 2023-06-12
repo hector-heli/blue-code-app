@@ -2,61 +2,81 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useContext } from "react"
 
-import { UsersContext } from "../ContextProvider"
+import { UsersContext, initialCurrentUserState } from "../ContextProvider"
 import { createNewUser } from '../helpers/CrudUsers'
 
-const SignUp = ({creatingUser, setCreatingUser}) => {
+const SignUp = ({creatingUser, setCreatingUser, closeModal}) => {
   const  {currentUser, setCurrentUser}  = useContext(UsersContext);
   
- /*  useEffect(() => {
-    (()=>console.log(currentUser))();
-  }, []); */
+/*  useEffect(() => {
+    createNewUser && setCurrentUser(initialCurrentUserState)
+
+    console.log(currentUser);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [createNewUser]); */
 
   const updateField = async(e) => {
-        e.preventDefault  
-        setCreatingUser(false);
-        const updatedRoles = [...currentUser.roles]; // Crear una nueva copia del array roles
+    e.preventDefault  
+    //setCreatingUser(false);
+    const updatedRoles = [...currentUser.roles]; // Crear una nueva copia del array roles
 
-        switch (e.target.name){
-          case 'name':
-            setCurrentUser(prevUser => ({...prevUser, name: e.target.value}));
-            break;
-          case 'email':
-            setCurrentUser(prevUser => ({...prevUser, email: e.target.value}));
-            break;
-          case 'password':
-            setCurrentUser(prevUser => ({...prevUser, password: e.target.value}));
-            break;
-          case 'callId':
-            setCurrentUser(prevUser => ({...prevUser, telegramCallId: e.target.value}));
-            break;
-          case 'user':
-            (e.target.checked)
-            ? updatedRoles[0] = "usuario" // Actualizar la primera posición del array
-            : updatedRoles[0] = ""; // Vaciar la primera posición del array
-            setCurrentUser(prevUser => ({ ...prevUser, roles: updatedRoles }));
-            break;
-          case 'moderator':
-            (e.target.checked)
-            ? updatedRoles[1] = "moderador" // Actualizar la primera posición del array
-            : updatedRoles[1] = ""; // Vaciar la primera posición del array
-            await setCurrentUser(prevUser => ({ ...prevUser, roles: updatedRoles }));
-            break;
-            case 'admin':
-            (e.target.checked)
-            ? updatedRoles[2] = "admin" // Actualizar la primera posición del array
-            : updatedRoles[2] = ""; // Vaciar la primera posición del array
-            await setCurrentUser(prevUser => ({ ...prevUser, roles: updatedRoles }));
-            break;
-        }
-        console.log(currentUser);
+    switch (e.target.name){
+      case 'name':
+        setCurrentUser(prevUser => ({...prevUser, username: e.target.value}));
+        break;
+      case 'email':
+        setCurrentUser(prevUser => ({...prevUser, email: e.target.value}));
+        break;
+      case 'password':
+        setCurrentUser(prevUser => ({...prevUser, password: e.target.value}));
+        break;
+      case 'callId':
+        setCurrentUser(prevUser => ({...prevUser, telegramCallId: e.target.value}));
+        break;
+      case 'user':
+        (e.target.checked)
+        ? updatedRoles[0] = "usuario" // Actualizar la primera posición del array
+        : updatedRoles[0] = ""; // Vaciar la primera posición del array
+        setCurrentUser(prevUser => ({ ...prevUser, roles: updatedRoles }));
+        break;
+      case 'moderator':
+        (e.target.checked)
+        ? updatedRoles[1] = "moderador" // Actualizar la primera posición del array
+        : updatedRoles[1] = ""; // Vaciar la primera posición del array
+        await setCurrentUser(prevUser => ({ ...prevUser, roles: updatedRoles }));
+        break;
+        case 'admin':
+        (e.target.checked)
+        ? updatedRoles[2] = "admin" // Actualizar la primera posición del array
+        : updatedRoles[2] = ""; // Vaciar la primera posición del array
+        await setCurrentUser(prevUser => ({ ...prevUser, roles: updatedRoles }));
+        break;
+      }
+      console.log(currentUser);
+    }
+
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      createNewUser(currentUser);
+      setCurrentUser(initialCurrentUserState);
+      setCreatingUser(false);
+      closeModal()  ;
+    }
+
+    const handleUpdate = (e) => {
+      e.preventDefault();
+      console.log(e.value);
+      //createNewUser(currentUser);
+      //setCurrentUser(initialCurrentUserState);
+      closeModal()  ;
     }
 
   return (
+    <UsersContext.Provider value={currentUser}>
       <div className="Auth-form-container card max-widht-100">
-        <form className="Auth-form">
+        <form className="Auth-form" >
           <div className="Auth-form-content">
-            <h3 className="Auth-form-title">{creatingUser? "Nuevo Usuario" : "Actualizar Usuario"}</h3>
+            <h3 className="Auth-form-title">{"Gestión de Usuario"}</h3>
             <div className="form-group mt-3">
               <label>Nombre de Usuario</label>
               <input
@@ -64,7 +84,7 @@ const SignUp = ({creatingUser, setCreatingUser}) => {
                 name="name"
                 className="form-control mt-1"
                 placeholder="Nombre"
-                value={ creatingUser?"": currentUser.name}
+                value={ currentUser.username }
                 onChange={updateField}
               />
             </div>
@@ -75,18 +95,18 @@ const SignUp = ({creatingUser, setCreatingUser}) => {
                 name="email"
                 className="form-control mt-1"
                 placeholder="Email Address"
-                value={ creatingUser?"": currentUser.email}
+                value={ currentUser.email}
                 onChange={updateField}
               />
             </div>
             <div className={`form-group mt-3`}>
               <label>Password</label>
               <input
-                type="text"
+                type="password"
                 name="password"
                 className="form-control mt-1"
                 placeholder="Password"
-                value={creatingUser? "" : currentUser.password}
+                value={currentUser.password}
                 onChange={updateField}
 
               />
@@ -156,14 +176,20 @@ const SignUp = ({creatingUser, setCreatingUser}) => {
               </ul>
             </div>
             <div className="d-grid gap-2 mt-3">
-              <button type="submit" className="btn btn-primary" onClick={()=>createNewUser(currentUser)}>
-                Submit
+              <button 
+                type="button" 
+                className="btn btn-primary" 
+                onClick={creatingUser? handleSubmit: handleUpdate} 
+                defaultValue={false}
+              >
+                
+                Enviar
               </button>
             </div>
           </div>
         </form>
       </div>
-      
+    </UsersContext.Provider>
     )
 }
 
