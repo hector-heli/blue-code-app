@@ -14,7 +14,7 @@ export const createUser = async (req, res) => {
       email,
       password,
       telegramCallId,
-      roles: rolesFound.map((role) => role.name),
+      roles: rolesFound.map((role) => role.id),
     });
 
     // encrypting password
@@ -37,37 +37,65 @@ export const createUser = async (req, res) => {
 
 export const getUsers = async (req, res) => {
   const users = await User.find().populate('roles');
-  console.log(users);
+  //console.log(users);
 
   return res.json(users);
 };
 
 export const getUserById = async (req, res) => {
-  const user = await User.findById(req.params.userId);
-  return res.json(user);
+  //console.log(req.params);
+  try {
+    const user = await User.findById(req.params.id);
+    return res.json(user);
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 export const deleteUserById = async (req, res) => {
-  return res.json('Deleting user')
-};
+  try {
+    const user = await User.deleteOne(req.params.id);
+    return res.json(user);
+  } catch (error) {
+    console.error(error);
+  }};
 
 export const updateUserById = async (req, res) => {
-  const { userId } = req.params; // Obtén el ID del usuario de los parámetros de la solicitud
-  const updatedData = req.body; // Obtén los datos actualizados del usuario del cuerpo de la solicitud
+
+  console.log(req.body);
+  const { username, email, password, telegramCallId, roles } = req.body;
 
   try {
-    const user = await User.findByIdAndUpdate(userId, updatedData, { new: true });
-    // La función findByIdAndUpdate buscará y actualizará el usuario por su ID.
-    // El tercer parámetro { new: true } devuelve el documento actualizado en la respuesta.
+    const rolesFound = await Role.find({ name: { $in: roles } });
+    console.log(rolesFound);
 
-    if (!user) {
-      return res.status(404).json({ message: 'Usuario no encontrado' });
-    }
+    // creating a new User
+    const updatedFields = new User({
+      username,
+      email,
+      password,
+      telegramCallId,
+      roles: rolesFound.map((role) => role.id),
+    });
 
-    res.status(200).json(user);
+    // encrypting password
+    updatedFields.password = await User.encryptPassword(req.body.password);
+    console.log(updatedFields);
+
+    // saving the new user
+    const updatedUser = await User.findOneAndUpdate(
+      {_id: req.params.id },
+      {updatedFields}, 
+      { new: true }
+    ).populate('roles');
+
+    console.log(updatedUser);
+
+    return res.status(200).json(updatedUser);
   } catch (error) {
-    console.error('Error al actualizar el usuario:', error);
-    res.status(500).json({ message: 'Error interno del servidor' });
+    console.error(error);
+    return res.status(500).json({ error: 'Error en el servidor' });
+
   }
 };
 

@@ -16,4 +16,7 @@ router.post("/signup", signupHandler, [checkExistingUser, checkExistingRole]);
 
 router.post("/signin", signinHandler);
 
+
+
+
 export default router;

@@ -12,7 +12,7 @@ export const getUsers = async () => {
 
 export const createNewUser = (newUser) => {
   try {
-    axios.post('http://localhost:3000/api/auth/signup', newUser, { timeout: 5000 })
+    axios.post('http://localhost:3000/api/users/signup', newUser, { timeout: 5000 })
     .then ((response) => console.log(response.data)) ;
 
   } catch (error) {
@@ -28,8 +28,9 @@ export const createNewUser = (newUser) => {
 
 export const updateUser = (user) => {
   try {
-    axios.put('http://localhost:3000/api/auth/signup', user, { timeout: 5000 })
-    .then ((response) => console.log(response.data)) ;
+    axios.put(`http://localhost:3000/api/users/${user.userId}`, user, { timeout: 5000 })
+    .then ((response) => console.log(response.data))
+    .catch (error => console.error('Ocurrión un error em la solicitud:', error))
 
   } catch (error) {
     if (axios.isCancel(error)) {

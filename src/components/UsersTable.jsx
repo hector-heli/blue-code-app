@@ -85,7 +85,7 @@ const UsersTable = () => {
 
   useEffect(() => {
       fetchUsers();
-  }, []);
+  }, [isOpen]);
 
   const fetchUsers = async () => {
     const data = await getUsers();
@@ -111,7 +111,7 @@ const UsersTable = () => {
     setCreatingUser(false);
     console.log(user);
     await setCurrentUser({
-      userId: user._id,
+      //userId: user._id,
       username: user.userName,
       password: user.password,  
       email: user.email,

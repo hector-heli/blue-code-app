@@ -23,7 +23,6 @@ export const signupHandler = async (req, res) => {
       const role = await Role.findOne({ name: "usuario" });
       newUser.roles = [role._id];
     }
-
     // Saving the User Object in Mongodb
     const savedUser = await newUser.save();
     console.log(savedUser)

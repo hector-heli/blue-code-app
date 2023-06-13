@@ -1,21 +1,13 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-import React, { useEffect, useContext } from "react"
+import React, { useContext } from "react"
 
 import { UsersContext, initialCurrentUserState } from "../ContextProvider"
-import { createNewUser } from '../helpers/CrudUsers'
+import { createNewUser, updateUser } from '../helpers/CrudUsers'
 
 const SignUp = ({creatingUser, setCreatingUser, closeModal}) => {
   const  {currentUser, setCurrentUser}  = useContext(UsersContext);
-  
-/*  useEffect(() => {
-    createNewUser && setCurrentUser(initialCurrentUserState)
-
-    console.log(currentUser);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [createNewUser]); */
-
-  const updateField = async(e) => {
+    const updateField = async(e) => {
     e.preventDefault  
     //setCreatingUser(false);
     const updatedRoles = [...currentUser.roles]; // Crear una nueva copia del array roles
@@ -55,26 +47,28 @@ const SignUp = ({creatingUser, setCreatingUser, closeModal}) => {
       console.log(currentUser);
     }
 
-    const handleSubmit = (e) => {
+    const handleClick = (e) => {
       e.preventDefault();
+      creatingUser? handleSubmit(): handleUpdate();
+    }
+
+    const handleSubmit = () => {
       createNewUser(currentUser);
       setCurrentUser(initialCurrentUserState);
       setCreatingUser(false);
       closeModal()  ;
     }
 
-    const handleUpdate = (e) => {
-      e.preventDefault();
-      console.log(e.value);
-      //createNewUser(currentUser);
-      //setCurrentUser(initialCurrentUserState);
+    const handleUpdate = () => {
+      updateUser(currentUser);
+      setCurrentUser(initialCurrentUserState);
       closeModal()  ;
     }
 
   return (
     <UsersContext.Provider value={currentUser}>
       <div className="Auth-form-container card max-widht-100">
-        <form className="Auth-form" >
+        <form className="Auth-form" onSubmit={handleClick} >
           <div className="Auth-form-content">
             <h3 className="Auth-form-title">{"Gestión de Usuario"}</h3>
             <div className="form-group mt-3">
@@ -111,17 +105,6 @@ const SignUp = ({creatingUser, setCreatingUser, closeModal}) => {
 
               />
             </div>
-            {/* <div className={`form-group mt-3 ${!creatingUser&&"d-none"}`}>
-              <label>Confirmar Password</label>
-              <input
-                type="text"
-                name="password"
-                className="form-control mt-1"
-                placeholder="Password"
-                value={creatingUser? "" : currentUser.password}
-
-              />
-            </div> */}
             <div className="form-group mt-3">
               <label>Id de Telegram</label>
               <input
@@ -129,12 +112,11 @@ const SignUp = ({creatingUser, setCreatingUser, closeModal}) => {
                 name="callId"
                 className="form-control mt-1"
                 placeholder="CALL_ID"
-                value={ !creatingUser&&currentUser.telegramCallId !== undefined? currentUser.telegramCallId: ""}
+                value={ currentUser.telegramCallId }
                 onChange={updateField}
 
               />
             </div>
-
             <div className="form-group mt-3 flex">           
               <h5>Asigne los roles del usuario</h5>
               <ul className="grid">
@@ -145,7 +127,7 @@ const SignUp = ({creatingUser, setCreatingUser, closeModal}) => {
                     id="user"
                     name="user"
                     value="usuario"
-                    checked = { creatingUser||currentUser.roles===undefined? false : currentUser.roles.find(role=>role.name ==='usuario') }
+                    checked = { currentUser.roles===undefined? false : currentUser.roles.find(role=>role.name ==='usuario') }
                     onChange={updateField}
                     
                     />
@@ -157,7 +139,7 @@ const SignUp = ({creatingUser, setCreatingUser, closeModal}) => {
                     id="moderator" 
                     name="moderator" 
                     value="moderador" 
-                    checked = { creatingUser||currentUser.roles===undefined? false : currentUser.roles.find(role=>role.name ==='moderador') }
+                    checked = { currentUser.roles===undefined? false : currentUser.roles.find(role=>role.name ==='moderador') }
                     onChange={updateField}
                   />
                     
@@ -169,7 +151,7 @@ const SignUp = ({creatingUser, setCreatingUser, closeModal}) => {
                     id="admin" 
                     name="admin" 
                     value="admin"
-                    checked = { creatingUser||currentUser.roles===undefined? false : currentUser.roles.find(role=>role.name ==='admin') }
+                    checked = { currentUser.roles===undefined? false : currentUser.roles.find(role=>role.name ==='admin') }
                     onChange={updateField}
                   />
                 </li>
@@ -177,10 +159,8 @@ const SignUp = ({creatingUser, setCreatingUser, closeModal}) => {
             </div>
             <div className="d-grid gap-2 mt-3">
               <button 
-                type="button" 
+                type="submit" 
                 className="btn btn-primary" 
-                onClick={creatingUser? handleSubmit: handleUpdate} 
-                defaultValue={false}
               >
                 
                 Enviar
