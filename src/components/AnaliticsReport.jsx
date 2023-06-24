@@ -5,7 +5,7 @@ import React, { useState, useEffect, useContext, useCallback }  from "react";
 import { DataTable, Box, Text, CheckBoxGroup } from "grommet";
 
 
-import { epochTimeToDate } from "../epochTimeToDate";
+import { epochTimeToDate } from "../server/libs/epochTimeToDate";
 import { CallsContext } from "../ContextProvider";
 import { getAnalitics, updateAnaliticsById } from "../helpers/CrudAnaliticsReports";
 

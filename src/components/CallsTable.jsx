@@ -4,7 +4,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { DataTable, Box, Meter, Text } from "grommet";
 
-import { epochTimeToDate } from "../epochTimeToDate";
+import { epochTimeToDate } from "../server/libs/epochTimeToDate";
 import { CallsContext } from "../ContextProvider";
 
 
@@ -41,10 +41,10 @@ const CallsTable = () => {
     const newCall = {
       Id: calls.indexOf(call) + 1,
       Room: call.data.Room,
-      epochTime: epochTimeToDate(call.data.epochTime),
+      epochTime: epochTimeToDate((call.data.epochTime)*1000),
       codeAlarm: call.data.codeAlarm,
-      activateTime: epochTimeToDate(call.data.activateTime),
-      unactivateTime: epochTimeToDate(call.data.unactivateTime),
+      activateTime: epochTimeToDate((call.data.activateTime)*1000),
+      unactivateTime: epochTimeToDate((call.data.unactivateTime)*1000),
     };
     return newCall;
   });

@@ -3,17 +3,19 @@ import axios from 'axios';
 export const getSchedule = async () => {
   try {
     const res = await axios.get('http://localhost:3000/api/schedule');
-    console.log(res);
+    //console.log(res.data);
     return res.data;
   } catch (error) {
     console.error('Ocurrió un error en la solicitud:', error);
   }
 };
 
-export const createNewShift = (newShift) => {
+export const createNewShift = async(newShift) => {
+  //console.log(newShift);
+
   try {
-    axios.post('http://localhost:3000/api/auth/schedule', newShift, { timeout: 5000 })
-    .then ((res) => console.log(res.data)) ;
+    // eslint-disable-next-line no-unused-vars
+    const shiftCreated = await axios.post('http://localhost:3000/api/schedule', newShift, { timeout: 5000 });
 
   } catch (error) {
     if (axios.isCancel(error)) {
@@ -26,10 +28,10 @@ export const createNewShift = (newShift) => {
   }
 };
 
-export const updateShift = (user) => {
+export const updateShift = async(user) => {
   //console.log(user.id);
   try {
-    axios.put(`http://localhost:3000/api/schedule/${user.userId}`, user, { timeout: 5000 })
+    await axios.put(`http://localhost:3000/api/schedule/${user.userId}`, user, { timeout: 5000 })
     .then ((res) => {
       console.log(res.data)})
     .catch (error => console.error('Ocurrió un error em la solicitud:', error))

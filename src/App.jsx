@@ -13,8 +13,6 @@ import Report from './views/Reports';
 import NavBar from './components/NavBar';
 import Footer from './components/Footer'
 import { CallsContext } from './ContextProvider';
-import User from './server/models/User';
-import SignUp from './components/SignUp';
 
 //import PruebaComponente from './components/PruebaComponente'
 
@@ -37,7 +35,7 @@ const App = () => {
     const data = await getAllCalls();
     setCalls(data)},[]);
 
-  (() => console.log(calls))();
+  //(() => console.log(calls))();
 
   return (
     <CallsContext.Provider value={calls}>

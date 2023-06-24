@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { get } from 'mongoose'
 
-import { epochTimeToDate } from '../epochTimeToDate'
+import { epochTimeToDate } from '../server/libs/epochTimeToDate'
 
 const PruebaComponente = () => {
   const [ calls, setCalls ] = useState([])

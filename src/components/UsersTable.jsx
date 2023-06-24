@@ -107,7 +107,7 @@ const UsersTable = () => {
     //console.log(currentUser);
 
     setCreatingUser(false);
-    console.log(user);
+    //console.log(user);
     setCurrentUser({
       userId: user._id,
       username: user.userName,

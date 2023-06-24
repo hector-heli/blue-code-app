@@ -10,9 +10,9 @@ export const getUsers = async () => {
   }
 };
 
-export const createNewUser = (newUser) => {
+export const createNewUser = async(newUser) => {
   try {
-    axios.post('http://localhost:3000/api/auth/signup', newUser, { timeout: 5000 })
+    await axios.post('http://localhost:3000/api/auth/signup', newUser, { timeout: 5000 })
     .then ((response) => console.log(response.data)) ;
 
   } catch (error) {
@@ -26,10 +26,10 @@ export const createNewUser = (newUser) => {
   }
 };
 
-export const updateUser = (user) => {
+export const updateUser = async (user) => {
   //console.log(user.id);
   try {
-    axios.put(`http://localhost:3000/api/users/${user.userId}`, user, { timeout: 5000 })
+    await axios.put(`http://localhost:3000/api/users/${user.userId}`, user, { timeout: 5000 })
     .then ((response) => {
       console.log(response.data)})
     .catch (error => console.error('Ocurrió un error em la solicitud:', error))

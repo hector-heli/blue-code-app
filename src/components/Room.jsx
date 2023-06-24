@@ -2,7 +2,7 @@
 /* eslint-disable no-unused-vars */
 // eslint-disable-next-line no-unused-vars
 import React,{ useState, useEffect } from 'react'
-import { epochTimeToDate } from '../epochTimeToDate'
+import { epochTimeToDate } from '../server/libs/epochTimeToDate'
 
 const Room = ( {call} ) => {
 

@@ -1,29 +1,60 @@
+/* eslint-disable no-case-declarations */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-import React, { useContext } from "react"
+import React, { useEffect, useContext } from "react"
 
 import { UsersContext, ScheduleContext, initialCurrentShiftState } from "../ContextProvider"
 import { createNewShift, updateShift } from '../helpers/CrudSchedule'
+import { getUsers } from "../helpers/CrudUsers"
 
-const ShiftManager = ({users, creatingShift, setCreatingShift, closeModal}) => {
+const ShiftManager = ({users, setUsers, creatingShift, setCreatingShift, closeModal}) => {
   const  { currentShift, setCurrentShift }  = useContext(ScheduleContext);
 
-  const updateField = async(e) => {
-    e.preventDefault  
-    //setCreatingShift(false);
+  useEffect(() =>{
+    fetchUsers();
+  }, []);
 
+  const fetchUsers = async () => {
+  
+    const dataUsers = await getUsers();
+    //console.log(dataUsers);
+    setUsers(dataUsers);
+    //console.log(users);
+
+  };
+
+
+  //console.log(users);
+
+   //setCreatingShift(false);
+   let epochStartTime;
+   let epochEndTime;
+
+  const updateField = async(e) => {
+    e.preventDefault();  
+   
     switch (e.target.name){
       case 'startDate':
-        setCurrentShift(prevShift => ({...prevShift, startDate: e.target.value}));
+        const startTime = new Date(e.target.value); 
+        epochStartTime = startTime.getTime();
+        setCurrentShift(prevShift => ({...prevShift, startDate: epochStartTime}));
+        console.log(epochStartTime);
         break;
       case 'endDate':
-        setCurrentShift(prevShift => ({...prevShift, endDate: e.target.value}));
+        const endTime = new Date(e.target.value);
+        epochEndTime = endTime.getTime();
+        setCurrentShift(prevShift => ({...prevShift, endDate: epochEndTime}));
+        console.log(epochEndTime);
         break;
+        
       case 'chief':
-        setCurrentShift(prevShift => ({...prevShift, password: e.target.value}));
+        setCurrentShift(prevShift => ({...prevShift, chief: e.target.value}));
+        console.log(e.target.value);
         break;
+        
       case 'doctor':
-        setCurrentShift(prevShift => ({...prevShift, telegramCallId: e.target.value}));
+        setCurrentShift(prevShift => ({...prevShift, doctor: e.target.value}));
+        console.log(e.target.value);
         break;
       }
       console.log(currentShift);
@@ -57,10 +88,9 @@ const ShiftManager = ({users, creatingShift, setCreatingShift, closeModal}) => {
                 <label>Inicio de turno</label>
                 <input
                   type="datetime-local"
-                  name="initDate"
+                  name="startDate"
                   className="form-control mt-1"
-                  placeholder="Inicio"
-                  value={ currentShift }
+                  defaultValue={ currentShift.startDate }
                   onChange={updateField}
                 />
               </div>
@@ -71,20 +101,39 @@ const ShiftManager = ({users, creatingShift, setCreatingShift, closeModal}) => {
                   name="endDate"
                   className="form-control mt-1"
                   placeholder="Fin"
-                  value={ currentShift }
+                  defaultValue={ currentShift.endDate }
                   onChange={updateField}
                 />
               </div>
               <div className={`form-group mt-3`}>
-                <label>Jefe de turno</label>
+                <label>Jefe de turno ....</label>
                 <select 
                   name="chief" 
-                  value={'Banana'}
+                  defaultValue={''}
                   onChange={updateField}  
+                  //value={currentShift.chief}
                 >
-                  <option>Banana</option>
+                  <option> </option>
+                  {users.map(user=>(
+                    <option key={user._id}>{user.username}</option>
+                  ))}
+                  {/* <option>Banana</option>
                   <option >Cherry</option>
-                  <option>Lemon</option>
+                  <option>Lemon</option> */}
+                </select>
+              </div>
+              <div className={`form-group mt-3`}>
+                <label>Médico ...............</label>
+                <select 
+                  name="doctor" 
+                  defaultValue={''}
+                  onChange={updateField} 
+                  //value={currentShift.doctor} 
+                >
+                  <option> </option>  
+                  {users.map(user=>(
+                    <option key={user._id}>{user.username}</option>
+                  ))}
                 </select>
               </div>
               

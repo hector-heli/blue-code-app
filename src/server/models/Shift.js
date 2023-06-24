@@ -2,11 +2,13 @@ import { Schema, model } from "mongoose";
 
 const shiftSchema = new Schema({
   startDate: {
-    type: Date,
+    type: Number,
+    //default: Date.now(),
     required: true
   },
   endDate: {
-    type: Date,
+    type: Number,
+    //default: Date.now(),
     required: true
   },
   chief: {

@@ -6,21 +6,40 @@ import { DataTable, Box, CheckBoxGroup, Text, Button } from "grommet";
 import { Update, Trash, Add } from "grommet-icons"
 
 import { getUsers, deleteUser } from '../helpers/CrudUsers';
-import { getSchedule, updateShift } from '../helpers/CrudSchedule';
-
+import { getSchedule, updateShift, deleteShift } from '../helpers/CrudSchedule';
 import ShiftManager from "./ShiftManager";
 import Modal from "./Modal";
-
 import { UsersContext, initialCurrentShiftState, ScheduleContext } from "../ContextProvider";
+import { epochTimeToDate } from "../server/libs/epochTimeToDate";
 
 const ScheduleTable = () => {
-  const {users, setUsers} = useState([]);
-
+  const [users, setUsers] = useState([]);
   const [schedule, setSchedule] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
-  const [currentShif, setCurrentShift] = useState(initialCurrentShiftState);
+  const [currentShift, setCurrentShift] = useState(initialCurrentShiftState);
   const [creatingShift, setCreatingShift] = useState(true);
+
+  useEffect(() => {
+    fetchUsers();
+    fetchSchedule();
+  }, [isOpen]);
+
+  const fetchUsers = async () => {
+    //console.log(users);
   
+    const dataUsers = await getUsers();
+    //console.log(dataUsers);
+    setUsers(dataUsers);
+  };
+  
+  const fetchSchedule = async () => {
+    const dataSchedule = await getSchedule();
+    console.log(dataSchedule);
+    setSchedule(dataSchedule);
+  };
+
+  //console.log(users);
+
   const columns = [
   {
     property: "Id",
@@ -28,11 +47,11 @@ const ScheduleTable = () => {
     primary: true
   },
   {
-    property: "start-date",
+    property: "startDate",
     header: <Text> Inicio de turno </Text>,
   },
   {
-    property: "end-date",
+    property: "endDate",
     header: <Text> Fin de turno </Text>,
   },
   {
@@ -61,7 +80,7 @@ const ScheduleTable = () => {
         <Button 
           label="eliminar" 
           icon={<Trash size="medium" color="black"/>}
-          onClick={() => deleteOneShift(shift._id)}
+          onClick={() => deleteShift(shift._id)}
           defaultValue={false} 
         />
       </Box>
@@ -69,37 +88,13 @@ const ScheduleTable = () => {
   }, 
   
 ];
-
-  useEffect(() => {
-      fetchUsers();
-      fetchSchedule();
-  }, [isOpen]);
-
-  const fetchUsers = async () => {
-    const dataUsers = await getUsers();
-    setUsers(dataUsers);
-  };
-
-  const fetchSchedule = async () => {
-    const dataSchedule = await getSchedule();
-    setSchedule(dataSchedule);
-  };
-
-  /* const newData = users.map((user) => {
-    const newUser = {
-      _id: user._id,
-      userName: user.username,
-      telegramCallId: user.telegramCallId,
-      roles: user.roles,
-    };
-    return newUser;
-  });  */
-
+  //console.log(schedule);
   const newSchedule = schedule.map((shift) => {
     const newShift = {
       _id: shift._id,
-      initDate: shift.startDate,
-      endDate: shift.endDate,
+      Id: schedule.indexOf(shift) + 1,
+      startDate: epochTimeToDate(shift.startDate),
+      endDate: epochTimeToDate(shift.endDate),
       chief: shift.chief,
       doctor: shift.doctor,
     };
@@ -107,14 +102,14 @@ const ScheduleTable = () => {
   }); 
 
   const updateShift = async(shift) => {
+    //e.preventDefault();
     //console.log(currentUser);
     setCreatingShift(false);
     //console.log(shift);
     setCurrentShift({
-      _id: shift._id,
-      initDate: shift.initDate,
-      endDate: shift.initDate,
-      chief: shift.shiftChief,
+      startDate: epochTimeToDate(shift.startDate),
+      endDate: epochTimeToDate(shift.endDate),
+      chief: shift.chief,
       doctor: shift.doctor,
     });
     setIsOpen(true);
@@ -138,12 +133,14 @@ const ScheduleTable = () => {
   }
 
   return ( 
-    <ScheduleContext.Provider value={{currentShif, setCurrentShift}}>
+    <ScheduleContext.Provider value={{currentShift, setCurrentShift}}>
       <Modal 
         isOpen={isOpen}
         closeModal={closeModal}
       > 
         <ShiftManager 
+          users={users}
+          setUsers={setUsers}
           closeModal={closeModal}
           creatingShift={creatingShift}
           setCreatingShift={setCreatingShift}

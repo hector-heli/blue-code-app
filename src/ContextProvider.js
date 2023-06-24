@@ -16,9 +16,9 @@ export const initialCurrentUserState = {
 }
 
 export const initialCurrentShiftState = {
-  shiftId:"",
-  startDate:"",
-  endDate:"",
+  //shiftId:"",
+  startDate:0,
+  endDate:0,
   chief:"",
   doctor:""
 }
