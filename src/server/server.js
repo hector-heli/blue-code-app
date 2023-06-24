@@ -9,6 +9,7 @@ import callRouter from './routes/callsRoutes.js';
 import reportRoutes from './routes/reportRoutes.js' ;
 import authRoutes  from './routes/authRoutes.js';
 import usersRoutes from './routes/usersRoutes.js';
+import scheduleRoutes from './routes/scheduleRoutes.js'
 
 import { createRoles } from './libs/initialState.js'
 
@@ -42,6 +43,7 @@ server.use('/api/calls', callRouter);
 server.use('/api/reports', reportRoutes);
 server.use('/api/auth', authRoutes);
 server.use('/api/users', usersRoutes);
+server.use('/api/schedule', scheduleRoutes);
 
 server.listen (server.get('port'), ()=> {
   console.log(`Server listening on port ${server.get('port')}`);

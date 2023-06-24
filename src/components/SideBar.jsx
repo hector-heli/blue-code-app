@@ -22,7 +22,7 @@ const Sidebar = () => {
               <Nav.Link eventKey="response-time">Tiempos de respuesta</Nav.Link>
           </Nav.Item>
           <Nav.Item>
-              <Nav.Link eventKey="schedules-creation">Crear turnos</Nav.Link>
+              <Nav.Link eventKey="schedules">Gestión de turnos</Nav.Link>
           </Nav.Item>
           <Nav.Item>
               <Nav.Link eventKey="roles-assigments">Gestión de usuarios</Nav.Link>

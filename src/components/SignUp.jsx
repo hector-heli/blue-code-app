@@ -8,44 +8,44 @@ import { createNewUser, updateUser } from '../helpers/CrudUsers'
 const SignUp = ({creatingUser, setCreatingUser, closeModal}) => {
   const  {currentUser, setCurrentUser}  = useContext(UsersContext);
     const updateField = async(e) => {
-    e.preventDefault  
-    //setCreatingUser(false);
-    const updatedRoles = [...currentUser.roles]; // Crear una nueva copia del array roles
+      e.preventDefault  
+      //setCreatingUser(false);
+      const updatedRoles = [...currentUser.roles]; // Crear una nueva copia del array roles
 
-    switch (e.target.name){
-      case 'name':
-        setCurrentUser(prevUser => ({...prevUser, username: e.target.value}));
-        break;
-      case 'email':
-        setCurrentUser(prevUser => ({...prevUser, email: e.target.value}));
-        break;
-      case 'password':
-        setCurrentUser(prevUser => ({...prevUser, password: e.target.value}));
-        break;
-      case 'callId':
-        setCurrentUser(prevUser => ({...prevUser, telegramCallId: e.target.value}));
-        break;
-      case 'user':
-        (e.target.checked)
-        ? updatedRoles[0] = "usuario" // Actualizar la primera posición del array
-        : updatedRoles[0] = ""; // Vaciar la primera posición del array
-        setCurrentUser(prevUser => ({ ...prevUser, roles: updatedRoles }));
-        break;
-      case 'moderator':
-        (e.target.checked)
-        ? updatedRoles[1] = "moderador" // Actualizar la primera posición del array
-        : updatedRoles[1] = ""; // Vaciar la primera posición del array
-        await setCurrentUser(prevUser => ({ ...prevUser, roles: updatedRoles }));
-        break;
-        case 'admin':
-        (e.target.checked)
-        ? updatedRoles[2] = "admin" // Actualizar la primera posición del array
-        : updatedRoles[2] = ""; // Vaciar la primera posición del array
-        await setCurrentUser(prevUser => ({ ...prevUser, roles: updatedRoles }));
-        break;
+      switch (e.target.name){
+        case 'name':
+          setCurrentUser(prevUser => ({...prevUser, username: e.target.value}));
+          break;
+        case 'email':
+          setCurrentUser(prevUser => ({...prevUser, email: e.target.value}));
+          break;
+        case 'password':
+          setCurrentUser(prevUser => ({...prevUser, password: e.target.value}));
+          break;
+        case 'callId':
+          setCurrentUser(prevUser => ({...prevUser, telegramCallId: e.target.value}));
+          break;
+        case 'user':
+          (e.target.checked)
+          ? updatedRoles[0] = "usuario" // Actualizar la primera posición del array
+          : updatedRoles[0] = ""; // Vaciar la primera posición del array
+          setCurrentUser(prevUser => ({ ...prevUser, roles: updatedRoles }));
+          break;
+        case 'moderator':
+          (e.target.checked)
+          ? updatedRoles[1] = "moderador" // Actualizar la primera posición del array
+          : updatedRoles[1] = ""; // Vaciar la primera posición del array
+          await setCurrentUser(prevUser => ({ ...prevUser, roles: updatedRoles }));
+          break;
+          case 'admin':
+          (e.target.checked)
+          ? updatedRoles[2] = "admin" // Actualizar la primera posición del array
+          : updatedRoles[2] = ""; // Vaciar la primera posición del array
+          await setCurrentUser(prevUser => ({ ...prevUser, roles: updatedRoles }));
+          break;
+        }
+        console.log(currentUser);
       }
-      console.log(currentUser);
-    }
 
     const handleClick = (e) => {
       e.preventDefault();

@@ -44,12 +44,10 @@ const App = () => {
       <Router history={history}>
         <NavBar />
         <Routes>
-          <Route path='/' element = {<Rooms />} />
-          <Route path='/reports' element = {<Report/> } />
-          <Route path='/login' element = {<Login /> } />
-          <Route path='/signup' element = {<SignUp />} />
+          <Route path='/' element= {<Rooms />} />
+          <Route path='/reports' element= {<Report/> } />
+          <Route path='/login' element= {<Login /> } />
         </Routes>
-
         <Footer />
       </Router>
     </CallsContext.Provider>

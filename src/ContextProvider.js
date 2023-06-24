@@ -4,6 +4,7 @@ import { createContext } from "react"
 export const ReportContext = createContext();
 export const CallsContext = createContext();
 export const UsersContext = createContext();
+export const ScheduleContext = createContext();
 
 export const initialCurrentUserState = {
   userId:"",
@@ -12,4 +13,12 @@ export const initialCurrentUserState = {
   password:"",
   telegramCallId:"",
   roles:["usuario","",""],
+}
+
+export const initialCurrentShiftState = {
+  shiftId:"",
+  startDate:"",
+  endDate:"",
+  chief:"",
+  doctor:""
 }

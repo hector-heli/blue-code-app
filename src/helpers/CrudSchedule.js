@@ -1,24 +1,24 @@
 import axios from 'axios';
 
-export const getUsers = async () => {
+export const getSchedule = async () => {
   try {
-    const response = await axios.get('http://localhost:3000/api/users');
-    return response.data;
-
+    const res = await axios.get('http://localhost:3000/api/schedule');
+    console.log(res);
+    return res.data;
   } catch (error) {
     console.error('Ocurrió un error en la solicitud:', error);
   }
 };
 
-export const createNewUser = (newUser) => {
+export const createNewShift = (newShift) => {
   try {
-    axios.post('http://localhost:3000/api/auth/signup', newUser, { timeout: 5000 })
-    .then ((response) => console.log(response.data)) ;
+    axios.post('http://localhost:3000/api/auth/schedule', newShift, { timeout: 5000 })
+    .then ((res) => console.log(res.data)) ;
 
   } catch (error) {
     if (axios.isCancel(error)) {
       console.log('La solicitud fue cancelada.');
-    } else if  (error.code === 'ECONNABORTED') {
+    } else if (error.code === 'ECONNABORTED') {
       console.log('La solicitud fue abortada debido a un tiempo de espera excedido.');
     } else {
       console.error('Ocurrió un error en la solicitud:', error);
@@ -26,12 +26,12 @@ export const createNewUser = (newUser) => {
   }
 };
 
-export const updateUser = (user) => {
+export const updateShift = (user) => {
   //console.log(user.id);
   try {
-    axios.put(`http://localhost:3000/api/users/${user.userId}`, user, { timeout: 5000 })
-    .then ((response) => {
-      console.log(response.data)})
+    axios.put(`http://localhost:3000/api/schedule/${user.userId}`, user, { timeout: 5000 })
+    .then ((res) => {
+      console.log(res.data)})
     .catch (error => console.error('Ocurrió un error em la solicitud:', error))
 
   } catch (error) {
@@ -45,9 +45,9 @@ export const updateUser = (user) => {
   }
 };
 
-export const deleteUser = async(userId) => {
+export const deleteShift = async(userId) => {
   try {
-    await axios.delete(`http://localhost:3000/api/users/${userId}`);
+    await axios.delete(`http://localhost:3000/api/schedule/${userId}`);
     console.log('Borrado exitoso');
     // Puedes realizar alguna acción adicional después de borrar los datos
   } catch (error) {

@@ -5,20 +5,18 @@ import React, { useState, useEffect, useContext } from "react";
 import { DataTable, Box, CheckBoxGroup, Text, Button } from "grommet";
 import { Update, Trash, UserAdd } from "grommet-icons"
 
-import { epochTimeToDate } from "../epochTimeToDate";
-import { getUsers } from '../helpers/CrudUsers';
+import { getUsers, deleteUser } from '../helpers/CrudUsers';
 import SignUp from "./SignUp";
 import Modal from "./Modal";
 
 import { UsersContext, initialCurrentUserState } from "../ContextProvider";
 
 const UsersTable = () => {
-  const [users, setUsers] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
   const [currentUser, setCurrentUser] = useState(initialCurrentUserState);
   const [creatingUser, setCreatingUser] = useState(true);
+  const [users, setUsers] = useState([]);
   
-
   const columns = [
   {
     property: "Id",
@@ -74,7 +72,7 @@ const UsersTable = () => {
         <Button 
           label="eliminar" 
           icon={<Trash size="medium" color="black"/>}
-          onClick={() => console.log(user)}
+          onClick={() => deleteOneUser(user._id)}
           defaultValue={false} 
         />
       </Box>
@@ -106,12 +104,12 @@ const UsersTable = () => {
   }); 
 
   const updateUser = async(user) => {
-    console.log(currentUser);
+    //console.log(currentUser);
 
     setCreatingUser(false);
     console.log(user);
-    await setCurrentUser({
-      //userId: user._id,
+    setCurrentUser({
+      userId: user._id,
       username: user.userName,
       password: user.password,  
       email: user.email,
@@ -119,7 +117,7 @@ const UsersTable = () => {
       roles: user.roles
     });
     setIsOpen(true);
-    (console.log(currentUser));
+    //(console.log(currentUser));
 
   }
 
@@ -128,6 +126,11 @@ const UsersTable = () => {
     setCurrentUser(initialCurrentUserState);
     setCreatingUser(true);
     setIsOpen(true);
+  }
+
+  const deleteOneUser = (userId) => {
+    deleteUser(userId);
+    fetchUsers();
   }
 
   const closeModal = () => {

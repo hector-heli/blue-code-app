@@ -3,14 +3,16 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react';
 
-import { ReportContext } from '../ContextProvider'
+import { ReportContext, UsersContext } from '../ContextProvider';
 import Sidebar from '../components/SideBar';
 import CallsTable from '../components/CallsTable';
 import ResumeReport from '../components/AnaliticsReport';
 import UsersTable from '../components/UsersTable';
+import ScheduleTable from '../components/ScheduleTable';
 
 const Reports = () => {
   const [reportSelected, setReportSelected] = useState(() => <CallsTable />)
+  const [users, setUsers] = useState([]);
   
   const reportSwitch = () =>{
     switch (reportSelected) {
@@ -33,9 +35,18 @@ const Reports = () => {
       case 'roles-assigments':
         return (
           <div>
-            <h3> Gestión de usuarios </h3>
-            <UsersTable />
-          </div>
+              <h3> Gestión de usuarios </h3>
+              <UsersTable />
+            </div>
+            
+        ) ;
+
+        case 'schedules':
+        return (
+            <div>
+              <h3> Gestión de usuarios </h3>
+              <ScheduleTable />
+            </div>
         ) ;
       
       default: return <p>no disponible</p>

@@ -15,6 +15,7 @@
   "dependencies": {
     "@babel/register": "^7.21.0",
     "@blueprintjs/table": "^4.10.7",
+    "alert": "^5.1.4",
     "axios": "^1.4.0",
     "bcryptjs": "^2.4.3",
     "bootstrap": "^5.2.3",
