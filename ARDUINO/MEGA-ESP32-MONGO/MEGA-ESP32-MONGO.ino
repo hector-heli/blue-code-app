@@ -133,11 +133,11 @@ void buildDataArray(int index){
 
 void mensajeTelegram(String room){
   // Código para enviar un mensaje a través de Telegram
-  long long int chat_id1 = CHAT_ID_1;
+  //long long int chat_id1 = CHAT_ID_1;
   long long int chat_id2 = CHAT_ID_2;
 
-  String message = "Doctor,  Hay un codigo azul en la cama de la " + room + "\n su presencia es requerida";
-  bot.sendMessage(chat_id1, message);
+  String message = "Codigo azul en " + room ;
+  //bot.sendMessage(chat_id1, message);
   bot.sendMessage(chat_id2, message);
 
   Serial.println(message);

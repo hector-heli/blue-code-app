@@ -9,6 +9,8 @@ const Room = ( {call} ) => {
   const [backgroundColor, setBackgroundColor] = useState(true);
   const [bgColor, setBgColor] = useState(call.codeAlarm); 
 
+  //console.log(call);
+
   useEffect(() => {
     const interval = setInterval(() => {
       setBackgroundColor(!backgroundColor);
@@ -41,8 +43,8 @@ const Room = ( {call} ) => {
     <div className={call.codeAlarm} style={{ background: bgColor }}>
       <h2>{ call.Room }</h2>
       <ul>
-        <li> <strong>Hora de activación: </strong><br/>{ isNaN(epochTimeToDate(call.activateTime)) ? epochTimeToDate(call.activateTime) : "" }</li>
-        <li> <strong>Cancelado: </strong> <br/>{ epochTimeToDate(call.unactivateTime) }</li>
+        <li> <strong>Hora de activación: </strong><br/>{ isNaN(call.epochTime) ? "" : epochTimeToDate(call.epochTime*1000) }</li>
+        <li> <strong>Cancelado: </strong> <br/>{ isNaN(call.unactivateTime) ? "" : epochTimeToDate(call.unactivateTime*1000)}</li>
       </ul>
     </div>
   )

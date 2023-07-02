@@ -18,7 +18,7 @@ const RouteGuard = ({ children, ...rest }) => {
         <Route 
             {...rest }
             element = {
-                hasJWT()? children : <Navigate to = "/login" /> 
+                hasJWT()? children : <Navigate to = "/rooms" /> 
             }
         />
     )

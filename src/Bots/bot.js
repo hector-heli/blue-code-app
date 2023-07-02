@@ -5,13 +5,14 @@
 import { Telegraf } from 'telegraf';
 import { message } from 'telegraf/filters';
 
-
 const token = '5861283585:AAFQx2nQqfQwPRAXqI7XPU7iFUWS3gzqQx4';
 
-const bot = new Telegraf(token);
+export const bot = new Telegraf(token);
+
+// Configurar el webhook
 
 bot.start((ctx)=> {
-    console.log(ctx);
+    //console.log(ctx);
     ctx.reply("Iniciando la conversación del bot");  
 });   
 
@@ -25,11 +26,13 @@ bot.command('quit', async (ctx) => {
 
 bot.on(message('text'), async (ctx) => {
   // Explicit usage
-  // await ctx.telegram.sendMessage(ctx.message.chat.id, `Hello ${ctx.state.role}`);
+  console.log(ctx);
+
+  await ctx.telegram.sendMessage(ctx.message.chat.id, `Hello ${ctx.state.role}`);
 
   // Using context shortcut
-  await ctx.reply(`Hello ${ctx.state.role}`);
-});
+  //await ctx.reply(`Hello ${ctx.state.role}`);
+}); 
 
 bot.on('callback_query', async (ctx) => {
   // Explicit usage
@@ -49,7 +52,3 @@ bot.on('inline_query', async (ctx) => {
 });
 
 bot.launch();
-
-/* // Enable graceful stop
-process.once('SIGINT', () => bot.stop('SIGINT'));
-process.once('SIGTERM', () => bot.stop('SIGTERM')); */

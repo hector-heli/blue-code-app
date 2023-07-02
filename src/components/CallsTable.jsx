@@ -28,7 +28,6 @@ const columns = [
   }
 ];
 
-
 const CallsTable = () => {
   const [data, setData] = useState([]);
   const calls = useContext(CallsContext);
